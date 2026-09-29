@@ -29,9 +29,8 @@ public class PlayerMoveState : PlayerBaseMovementState
 
     public override void FixedUpdateState()
     {
-        // 입력 방향으로 실제 이동 처리 (2D 기준 X, Y 평면 이동)
-        Vector3 moveDirection = new Vector3(_moveInput, 0, 0f).normalized;
-        controller.transform.position += moveDirection * _moveSpeed * Time.fixedDeltaTime;
+        // 입력 방향으로 실제 이동 처리
+        controller.RB.linearVelocityX = _moveInput * _moveSpeed;
     }
 
     public override void ExitState()
