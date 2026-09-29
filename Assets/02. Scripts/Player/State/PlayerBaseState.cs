@@ -10,6 +10,8 @@ public abstract class PlayerBaseState
     public virtual void EnterState() {}
     public virtual void UpdateState() {}
     public virtual void FixedUpdateState() {}
+        // 점프 만들면서 바닥 충돌을 관리해야 할 것 같아서 만들었음.. 구조 이상하다고 생각하면 바로 말해줘
+    public virtual void OnCollisionEnter2DState(Collision2D other) {}
     public virtual void ExitState() {}
 
     // 이동 입력값을 읽어오는 함수. 각 State가 컨트롤러를 거치지 않고 이 함수를 통해 직접 입력을 받아온다.
@@ -17,5 +19,10 @@ public abstract class PlayerBaseState
     protected virtual float GetMoveInput()
     {
         return Input.GetAxisRaw("Horizontal");
+    }
+
+    protected virtual bool GetJumpInput()
+    {
+        return Input.GetKeyDown(KeyCode.Space);
     }
 }

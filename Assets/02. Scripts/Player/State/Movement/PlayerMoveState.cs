@@ -19,6 +19,7 @@ public class PlayerMoveState : PlayerBaseMovementState
     {
         // 이 State가 직접 입력을 받아서 저장 및 전환 여부를 판단한다
         _moveInput = GetMoveInput();
+        ChangeJumpState();
 
         // 이동 입력이 사라지면 Idle 상태로 전환
         if (_moveInput == 0f)
