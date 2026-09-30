@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerBaseMovementState : PlayerBaseState
+public abstract class PlayerBaseMovementState : PlayerBaseState
 {
     public PlayerBaseMovementState(PlayerController controller) : base(controller) {}
 
