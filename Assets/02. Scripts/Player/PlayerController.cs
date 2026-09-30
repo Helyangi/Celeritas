@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {   
     // 기본 변수
     public Rigidbody2D RB;
+    public PlayerStats Stats;
     
     // 현재 상태 담당
     private PlayerBaseMovementState _currentMovementState; // 현재 움직임 상태 담당
