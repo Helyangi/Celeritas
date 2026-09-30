@@ -11,4 +11,9 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
             controller.ChangeMovementState(controller.JumpState);
         }
     }
+
+    protected void Move(float inputMove)
+    {
+        controller.RB.linearVelocityX = inputMove * controller.Stats.MoveSpeed;
+    }
 }

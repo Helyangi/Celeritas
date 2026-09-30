@@ -23,9 +23,7 @@ public class PlayerJumpState : PlayerBaseMovementState
 
     public override void FixedUpdateState()
     {
-        Vector2 velocity = controller.RB.linearVelocity;
-        velocity.x = _jumpMoveInput * controller.Stats.MoveSpeed;
-        controller.RB.linearVelocity = velocity;
+        Move(_jumpMoveInput);
     }
 
     private void Jump()

@@ -30,7 +30,7 @@ public class PlayerMoveState : PlayerBaseMovementState
     public override void FixedUpdateState()
     {
         // 입력 방향으로 실제 이동 처리
-        controller.RB.linearVelocityX = _moveInput * controller.Stats.MoveSpeed;
+        Move(_moveInput);
     }
 
     public override void ExitState()
