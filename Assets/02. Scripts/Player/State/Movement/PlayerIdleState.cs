@@ -8,6 +8,7 @@ public class PlayerIdleState : PlayerBaseMovementState
     public override void EnterState()
     {
         // Idle 상태 진입 시 처리할 내용 (필요하면 정지 애니메이션 재생 등 추가)
+        controller.RB.linearVelocityX = 0f;
     }
 
     public override void UpdateState()
