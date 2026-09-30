@@ -1,9 +1,10 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{
+{   
     // 기본 변수
     public Rigidbody2D RB;
+    
     // 현재 상태 담당
     private PlayerBaseMovementState _currentMovementState; // 현재 움직임 상태 담당
     private PlayerBaseActionState _currentActionState; // 현재 행동 상태 담당
@@ -11,6 +12,15 @@ public class PlayerController : MonoBehaviour
     // 움직임 상태 정의
     public PlayerIdleState IdleState; // 아무 움직임도 없는 상태
     public PlayerMoveState MoveState; // 이동 중인 상태
+    public PlayerJumpState JumpState; // 점프 상태
+
+    private void Start()
+    {
+        if (RB == null)
+        {
+            RB = GetComponent<Rigidbody2D>();
+        }
+    }
 
     // 상태 정의
     private void Awake()
@@ -18,6 +28,7 @@ public class PlayerController : MonoBehaviour
         // 변수 초기화
         IdleState = new PlayerIdleState(this);
         MoveState = new PlayerMoveState(this);
+        JumpState = new PlayerJumpState(this);
 
         // 기본 상태 설정
         ChangeMovementState(IdleState);
@@ -35,6 +46,12 @@ public class PlayerController : MonoBehaviour
         // 물리 갱신이 필요한 상태 로직 처리
         _currentMovementState?.FixedUpdateState();
         _currentActionState?.FixedUpdateState();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        _currentMovementState?.OnCollisionEnter2DState(other);
+            // 액션 스테이트도 만들어야 하나?
     }
 
     // 현재 움직임 상태 변경 함수
