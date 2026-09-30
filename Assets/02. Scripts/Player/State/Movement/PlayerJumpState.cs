@@ -9,8 +9,6 @@ public class PlayerJumpState : PlayerBaseMovementState
 
     public PlayerJumpState(PlayerController controller) : base(controller) {}
 
-    private float _moveSpeed = 5;
-    private float _jumpForce = 10;
     private float _jumpMoveInput;
     
     public override void EnterState()
@@ -26,7 +24,7 @@ public class PlayerJumpState : PlayerBaseMovementState
     public override void FixedUpdateState()
     {
         Vector2 velocity = controller.RB.linearVelocity;
-        velocity.x = _jumpMoveInput * _moveSpeed;
+        velocity.x = _jumpMoveInput * controller.Stats.MoveSpeed;
         controller.RB.linearVelocity = velocity;
     }
 
@@ -36,7 +34,7 @@ public class PlayerJumpState : PlayerBaseMovementState
         velocity.y = 0f;
         controller.RB.linearVelocity = velocity;
 
-        controller.RB.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+        controller.RB.AddForce(Vector2.up * controller.Stats.JumpForce, ForceMode2D.Impulse);
     }
 
     // 지금은 그냥 땅에 충돌했는가만 보고 있어서 착지를 판정하려면 고쳐야 할듯

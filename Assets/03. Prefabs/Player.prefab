@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 185429241701311293}
   - component: {fileID: 5804276313229665210}
   - component: {fileID: -9006063578903496615}
+  - component: {fileID: -7191142349213766866}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -211,3 +212,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927694e8507c4417087c8e2266dfd63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  RB: {fileID: 185429241701311293}
+  Stats: {fileID: -7191142349213766866}
+--- !u!114 &-7191142349213766866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618313748160664770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ff966a90723420fa89516ee473cbb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  MoveSpeed: 5
+  JumpForce: 10

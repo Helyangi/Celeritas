@@ -4,7 +4,6 @@ using UnityEngine.Scripting.APIUpdating;
 // 이동 입력이 있을 때의 상태
 public class PlayerMoveState : PlayerBaseMovementState
 {
-    private float _moveSpeed = 5;
     // FixedUpdateState에서 사용할 입력값. 같은 프레임의 UpdateState에서 이 State가 직접 읽어 저장해둔다
     private float _moveInput;
 
@@ -31,7 +30,7 @@ public class PlayerMoveState : PlayerBaseMovementState
     public override void FixedUpdateState()
     {
         // 입력 방향으로 실제 이동 처리
-        controller.RB.linearVelocityX = _moveInput * _moveSpeed;
+        controller.RB.linearVelocityX = _moveInput * controller.Stats.MoveSpeed;
     }
 
     public override void ExitState()
