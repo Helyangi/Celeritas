@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public PlayerIdleState IdleState; // 아무 움직임도 없는 상태
     public PlayerMoveState MoveState; // 이동 중인 상태
     public PlayerJumpState JumpState; // 점프 상태
+    public PlayerFallState FallState; // 낙하 상태
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         IdleState = new PlayerIdleState(this);
         MoveState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
+        FallState = new PlayerFallState(this);
 
         // 기본 상태 설정
         ChangeMovementState(IdleState);
