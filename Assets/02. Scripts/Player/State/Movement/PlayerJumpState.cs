@@ -19,24 +19,14 @@ public class PlayerJumpState : PlayerBaseMovementState
     public override void UpdateState()
     {
         _jumpMoveInput = GetMoveInput();
+        if (controller.GroundChecker.IsGround())
+        {
+            controller.ChangeMovementState(controller.IdleState);
+        }
     }
 
     public override void FixedUpdateState()
     {
         Move(_jumpMoveInput);
-    }
-
-    // 지금은 그냥 땅에 충돌했는가만 보고 있어서 착지를 판정하려면 고쳐야 할듯
-    public override void OnCollisionEnter2DState(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            if (_jumpMoveInput != 0)
-            {
-                controller.ChangeMovementState(controller.MoveState);
-                return;
-            }
-            controller.ChangeMovementState(controller.IdleState);
-        }
     }
 }
