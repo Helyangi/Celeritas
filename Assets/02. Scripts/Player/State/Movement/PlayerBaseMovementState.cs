@@ -12,6 +12,13 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
             controller.ChangeMovementState(controller.JumpState);
         }
     }
+    protected void ChangeFallState()
+    {
+        if (controller.RB.linearVelocityY < 0 && !controller.GroundChecker.IsGround())
+        {
+            controller.ChangeMovementState(controller.FallState);
+        }
+    }
 
     protected void Move(float inputMove)
     {

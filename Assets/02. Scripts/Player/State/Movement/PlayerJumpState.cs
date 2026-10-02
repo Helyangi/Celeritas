@@ -18,11 +18,10 @@ public class PlayerJumpState : PlayerBaseMovementState
 
     public override void UpdateState()
     {
+        // 상태 변경 조건 체크
+        ChangeFallState();
+        
         _jumpMoveInput = GetMoveInput();
-        if (controller.GroundChecker.IsGround())
-        {
-            controller.ChangeMovementState(controller.IdleState);
-        }
     }
 
     public override void FixedUpdateState()
