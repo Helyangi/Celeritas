@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public PlayerJumpState JumpState; // 점프 상태
     public PlayerFallState FallState; // 낙하 상태
 
+    // 이름을 못 정했는데 마땅히 적을 곳을 생각 못해서 여기 적어봄
+    [HideInInspector] public bool CanJump = true;
+
     private void Start()
     {
         if (RB == null)

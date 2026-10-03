@@ -360,7 +360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4200458519128855453, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 4200458519128855453, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -455,10 +455,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3068467456999192361, guid: 831a6c823cd744bf489daaec6103b496, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3906258925660788419, guid: 831a6c823cd744bf489daaec6103b496, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 1747711157}
+    - target: {fileID: 7726772413388828695, guid: 831a6c823cd744bf489daaec6103b496, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

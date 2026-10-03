@@ -217,6 +217,7 @@ MonoBehaviour:
   RB: {fileID: 185429241701311293}
   Stats: {fileID: -7191142349213766866}
   GroundChecker: {fileID: 1260692395035282599}
+  CanJump: 1
 --- !u!114 &-7191142349213766866
 MonoBehaviour:
   m_ObjectHideFlags: 0
