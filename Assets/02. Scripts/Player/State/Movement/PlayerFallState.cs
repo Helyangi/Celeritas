@@ -14,7 +14,7 @@ public class PlayerFallState : PlayerBaseMovementState
     public override void UpdateState()
     {
         // 상태 변경 조건 체크
-        ChangeFallState();
+        ChangeJumpState();
 
         if (controller.GroundChecker.IsGround())
         {
@@ -27,5 +27,9 @@ public class PlayerFallState : PlayerBaseMovementState
     public override void FixedUpdateState()
     {
         Move(_fallMoveInput);
+    }
+    public override void ExitState()
+    {
+        controller.CanJump = true;
     }
 }

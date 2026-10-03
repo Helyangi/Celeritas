@@ -8,11 +8,11 @@ public class PlayerJumpState : PlayerBaseMovementState
     // - 착지 시 횟수 초기화 - 1번
 
     public PlayerJumpState(PlayerController controller) : base(controller) {}
-
     private float _jumpMoveInput;
     
     public override void EnterState()
     {
+        controller.CanJump = false;
         Jump(Vector2.up);
     }
 
