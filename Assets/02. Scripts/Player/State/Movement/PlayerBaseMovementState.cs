@@ -5,7 +5,7 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
 {
     public PlayerBaseMovementState(PlayerController controller) : base(controller) {}
 
-    protected void ChangeJumpState() // 점프 상태 전환
+    protected virtual void ChangeJumpState() // 점프 상태 전환
     {
         if (GetJumpInput() && controller.CanJump)
         {
@@ -13,7 +13,7 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
         }
     }
 
-    protected void ChangeFallState()  // 낙하 상태 전환
+    protected virtual void ChangeFallState()  // 낙하 상태 전환
     {
         if (controller.RB.linearVelocityY < 0 && !controller.GroundChecker.IsGround())
         {

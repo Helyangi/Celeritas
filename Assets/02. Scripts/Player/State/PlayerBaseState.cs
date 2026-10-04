@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public abstract class PlayerBaseState
 {
@@ -16,12 +17,21 @@ public abstract class PlayerBaseState
 
     // 이동 입력값을 읽어오는 함수. 각 State가 컨트롤러를 거치지 않고 이 함수를 통해 직접 입력을 받아온다.
     // TODO: MVP 이후 InputManager(싱글톤) 도입 시 이 부분만 교체하면 됨 (예: return InputManager.Instance.MoveInput;)
-    protected virtual float GetMoveInput()
+    protected bool GetMouseInput()
+    {
+        return Input.GetMouseButtonDown(0);
+    }
+    protected Vector2 GetMousePos()
+    {
+        Vector2 mouseScreenPos = Input.mousePosition;
+        return Camera.main.ScreenToWorldPoint(mouseScreenPos);
+    }
+    protected float GetMoveInput()
     {
         return Input.GetAxisRaw("Horizontal");
     }
 
-    protected virtual bool GetJumpInput()
+    protected bool GetJumpInput()
     {
         return Input.GetKeyDown(KeyCode.Space);
     }
