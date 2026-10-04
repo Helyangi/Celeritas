@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D RB;
     public PlayerStats Stats;
     public GroundChecker GroundChecker; // GroundChecker 연결
+    public LightAimingLine LightAimingLine; // LightAimingLine과 연결
     
     // 현재 상태 담당
     private PlayerBaseMovementState _currentMovementState; // 현재 움직임 상태 담당
@@ -16,11 +17,16 @@ public class PlayerController : MonoBehaviour
     public PlayerMoveState MoveState; // 이동 중인 상태
     public PlayerJumpState JumpState; // 점프 상태
     public PlayerFallState FallState; // 낙하 상태
+    public PlayerLightMoveState LightMoveState; // 빛 이동 상태
+
+    // 행동 상태 정의
+    public PlayerAimingState AimingState; // 아무것도 안하는 상태
 
     // 이름을 못 정했는데 마땅히 적을 곳을 생각 못해서 여기 적어봄
     [HideInInspector] public bool CanJump = true;
+    [HideInInspector] public Vector2 Point;
 
-    private void Start()
+    private void Awake()
     {
         if (RB == null)
         {
@@ -29,16 +35,21 @@ public class PlayerController : MonoBehaviour
     }
 
     // 상태 정의
-    private void Awake()
+    private void Start()
     {
-        // 변수 초기화
+        // 움직임 상태 변수 초기화
         IdleState = new PlayerIdleState(this);
         MoveState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
+        LightMoveState = new PlayerLightMoveState(this);
+
+        // 행동 상태 변수 초기화
+        AimingState = new PlayerAimingState(this);
 
         // 기본 상태 설정
         ChangeMovementState(IdleState);
+        ChangeActionState(AimingState);
     }
 
     private void Update()
