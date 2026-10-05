@@ -1,17 +1,19 @@
-using System.Drawing;
 using UnityEngine;
 
 public class PlayerLightMoveState : PlayerBaseMovementState
 {
     public PlayerLightMoveState(PlayerController controller) : base(controller) {}
+    
     public override void EnterState()
     {
         controller.CanJump = true;
     }
+    
     public override void FixedUpdateState()
     {
         LightMove();
     }
+    
     private void LightMove()
     {
         Vector2 newPos = Vector2.MoveTowards
@@ -29,9 +31,9 @@ public class PlayerLightMoveState : PlayerBaseMovementState
             controller.ChangeMovementState(controller.FallState);
         }
     }
+    
     public override void ExitState()
     {
         controller.RB.linearVelocityY = 0;
-        
     }
 }

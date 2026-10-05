@@ -66,12 +66,6 @@ public class PlayerController : MonoBehaviour
         _currentActionState?.FixedUpdateState();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        _currentMovementState?.OnCollisionEnter2DState(other);
-            // 액션 스테이트도 만들어야 하나?
-    }
-
     // 현재 움직임 상태 변경 함수
     public void ChangeMovementState(PlayerBaseMovementState newState)
     {
