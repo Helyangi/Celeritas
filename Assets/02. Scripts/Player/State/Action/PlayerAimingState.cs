@@ -3,8 +3,10 @@ using UnityEngine;
 public class PlayerAimingState : PlayerBaseActionState
 {
     public PlayerAimingState(PlayerController controller) : base(controller) {}
+    
     private Vector2 _direction;
     private bool _canLightMove;
+    
     public override void UpdateState()
     {
         RaycastHit2D hit = Physics2D.Raycast
@@ -35,6 +37,7 @@ public class PlayerAimingState : PlayerBaseActionState
             return controller.LightAimingLine.MaxDistance;
         }
     }
+    
     private void DrawAimingLine(RaycastHit2D hit) // 조준선 거리 랜더링 해주는 함수
     {
         Vector2 myPos = controller.transform.position;
@@ -43,6 +46,7 @@ public class PlayerAimingState : PlayerBaseActionState
         Vector2 endPos = myPos + _direction * GetDistance(hit);
         controller.LightAimingLine.DrawAimingLine(myPos, endPos);
     }
+    
     private void HandleHitLayer(RaycastHit2D hit) // 닿은 레이어가 뭔지 판단하는 함수
     {
         if (hit.collider == null)
