@@ -498,8 +498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7f96136fc3844c39ebdfb7187fb4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallChecker
-  _rightPoint: {fileID: 4200458519128855453}
-  _leftPoint: {fileID: 4200458519128855453}
+  _rightPoint: {fileID: 722866689299539105}
+  _leftPoint: {fileID: 6413977087221165504}
   _size: {x: 0.1, y: 1}
   _color: {r: 0, g: 1, b: 0.1826632, a: 1}
 --- !u!1 &8448175850590954393
