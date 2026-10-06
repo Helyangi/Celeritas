@@ -15,6 +15,7 @@ public class PlayerFallState : PlayerBaseMovementState
     {
         // 상태 변경 조건 체크
         ChangeJumpState();
+        ChangeWallGrabState();
 
         if (controller.GroundChecker.IsGround())
         {

@@ -5,12 +5,13 @@ public class PlayerController : MonoBehaviour
     // 기본 변수
     public Rigidbody2D RB;
     public PlayerStats Stats;
-    public GroundChecker GroundChecker; // GroundChecker 연결
+    public GroundChecker GroundChecker;     // GroundChecker 연결
+    public WallChecker WallChecker;         // WallChecker 연결
     public LightAimingLine LightAimingLine; // LightAimingLine과 연결
     
     // 현재 상태 담당
     private PlayerBaseMovementState _currentMovementState; // 현재 움직임 상태 담당
-    private PlayerBaseActionState _currentActionState; // 현재 행동 상태 담당
+    private PlayerBaseActionState _currentActionState;     // 현재 행동 상태 담당
 
     // 움직임 상태 정의
     public PlayerIdleState IdleState; // 아무 움직임도 없는 상태
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public PlayerJumpState JumpState; // 점프 상태
     public PlayerFallState FallState; // 낙하 상태
     public PlayerLightMoveState LightMoveState; // 빛 이동 상태
+    public PlayerWallGrabState WallGrabState;   // 벽잡기 상태
 
     // 행동 상태 정의
     public PlayerAimingState AimingState; // 아무것도 안하는 상태
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         MoveState = new PlayerMoveState(this);
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
+        WallGrabState = new PlayerWallGrabState(this);
         LightMoveState = new PlayerLightMoveState(this);
 
         // 행동 상태 변수 초기화

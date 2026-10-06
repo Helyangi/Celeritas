@@ -20,6 +20,7 @@ public class PlayerJumpState : PlayerBaseMovementState
     {
         // 상태 변경 조건 체크
         ChangeFallState();
+        ChangeWallGrabState();
         
         _jumpMoveInput = GetMoveInput();
     }
