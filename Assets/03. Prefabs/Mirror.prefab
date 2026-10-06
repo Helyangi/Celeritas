@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4423204367827982431}
   - component: {fileID: 6287379694026589007}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4207625511497236196}
   - component: {fileID: 5745458191406386319}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
