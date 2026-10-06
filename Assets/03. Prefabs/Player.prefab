@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &693556026550211657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6413977087221165504}
+  m_Layer: 0
+  m_Name: Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6413977087221165504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693556026550211657}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4200458519128855453}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3085312089077440721
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +164,7 @@ LineRenderer:
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
+    numCornerVertices: 3
     numCapVertices: 0
     alignment: 0
     textureMode: 0
@@ -157,10 +188,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LightAimingLine
   ContactLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 704
+  MirrorLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  MaxReflection: 10
   MaxDistance: 40
   _heatingColor: {r: 1, g: 1, b: 0, a: 0.78431374}
   _coolingColor: {r: 1, g: 1, b: 0, a: 0.39215687}
+--- !u!1 &3870535617272265793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 722866689299539105}
+  m_Layer: 0
+  m_Name: Right
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &722866689299539105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870535617272265793}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4200458519128855453}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6986655692229724989
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +332,7 @@ GameObject:
   - component: {fileID: -9006063578903496615}
   - component: {fileID: -7191142349213766866}
   - component: {fileID: 1260692395035282599}
+  - component: {fileID: 8056227787651364586}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -289,6 +356,8 @@ Transform:
   - {fileID: 8655686335079057686}
   - {fileID: 5244428564179657784}
   - {fileID: 992865333908495876}
+  - {fileID: 722866689299539105}
+  - {fileID: 6413977087221165504}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &185429241701311293
@@ -379,9 +448,10 @@ MonoBehaviour:
   RB: {fileID: 185429241701311293}
   Stats: {fileID: -7191142349213766866}
   GroundChecker: {fileID: 1260692395035282599}
+  WallChecker: {fileID: 8056227787651364586}
   LightAimingLine: {fileID: 2920367240162233314}
   CanJump: 1
-  Point: {x: 0, y: 0}
+  LightPath: []
 --- !u!114 &-7191142349213766866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +466,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   MoveSpeed: 5
   JumpForce: 10
-  LightMoveSpeed: 30
+  LightMoveSpeed: 35
+  LightMoveCornerOffset: 0.6
 --- !u!114 &1260692395035282599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,9 +480,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54dc11ae1723a44dc9a0dcfb1f1af881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundChecker
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   _point: {fileID: 5244428564179657784}
   _size: {x: 1, y: 0.1}
   _color: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &8056227787651364586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618313748160664770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7f96136fc3844c39ebdfb7187fb4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WallChecker
+  _rightPoint: {fileID: 4200458519128855453}
+  _leftPoint: {fileID: 4200458519128855453}
+  _size: {x: 0.1, y: 1}
+  _color: {r: 0, g: 1, b: 0.1826632, a: 1}
 --- !u!1 &8448175850590954393
 GameObject:
   m_ObjectHideFlags: 0

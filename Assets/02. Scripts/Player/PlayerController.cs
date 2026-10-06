@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     // 이름을 못 정했는데 마땅히 적을 곳을 생각 못해서 여기 적어봄
     [HideInInspector] public bool CanJump = true;
-    [HideInInspector] public Vector2 Point;
+    [HideInInspector] public List<Vector2> LightPath = new List<Vector2>(); // 빛 이동 시 순서대로 거쳐갈 경로 (Aiming 상태가 채우고 LightMove 상태가 읽음)
 
     private void Awake()
     {
