@@ -20,6 +20,14 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
             controller.ChangeMovementState(controller.FallState);
         }
     }
+    
+    protected virtual void ChangeWallGrabState()  // 벽잡기 상태 전환
+    {
+        if (controller.WallChecker.GetWallDirection() * GetMoveInput() > 0)
+        {
+            controller.ChangeMovementState(controller.WallGrabState);
+        }
+    }
 
     protected void Move(float inputMove) // 이동 함수
     {
