@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public PlayerFallState FallState; // 낙하 상태
     public PlayerLightMoveState LightMoveState; // 빛 이동 상태
     public PlayerWallGrabState WallGrabState;   // 벽잡기 상태
+    public PlayerWallJumpState WallJumpState;   // 벽점프 상태
 
     // 행동 상태 정의
     public PlayerAimingState AimingState; // 아무것도 안하는 상태
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         JumpState = new PlayerJumpState(this);
         FallState = new PlayerFallState(this);
         WallGrabState = new PlayerWallGrabState(this);
+        WallJumpState = new PlayerWallJumpState(this);
         LightMoveState = new PlayerLightMoveState(this);
 
         // 행동 상태 변수 초기화

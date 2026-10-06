@@ -29,6 +29,14 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
         }
     }
 
+    protected virtual void ChangeWallJumpState()  // 벽점프 상태 전환
+    {
+        if (GetJumpInput())
+        {
+            controller.ChangeMovementState(controller.WallJumpState);
+        }
+    }
+
     protected void Move(float inputMove) // 이동 함수
     {
         controller.RB.linearVelocityX = inputMove * controller.Stats.MoveSpeed;
