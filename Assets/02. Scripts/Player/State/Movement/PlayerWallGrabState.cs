@@ -8,6 +8,9 @@ public class PlayerWallGrabState : PlayerBaseMovementState
     // 벽에 닿은 상태에서 벽쪽으로 움직이면 안 움직이게 해뒀음
     // 미끄러지거나 하는 다른 행동 넣고 싶으면 같이 수정ㄱㄱ
     
+    // 벽에 붙는 키를 따로 만든다.
+    // 기본은 미끄러짐..????
+    
     private float _originalGravityScale;
 
     public override void EnterState()

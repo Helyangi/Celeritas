@@ -9,10 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="99959ba5-adb7-42de-b7a6-6a0216b0a0d4" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Celeritas/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Celeritas/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/State/Movement/PlayerBaseMovementState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/State/Movement/PlayerBaseMovementState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/State/Movement/PlayerFallState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/State/Movement/PlayerFallState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/State/Movement/PlayerJumpState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/State/Movement/PlayerJumpState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/State/Movement/PlayerWallGrabState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/State/Movement/PlayerWallGrabState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +19,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="3KIP4cwt8tPjP9ptZGX801s6Dqz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,7 +38,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/player-wall-grap",
+    "git-widget-placeholder": "develop",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
