@@ -17,6 +17,14 @@ public class LightAimingLine : MonoBehaviour
     [SerializeField] private float _coolingIntensity = 2f;   // 빛 구체에 안 닿았을 때 밝기 (은은하게)
     [SerializeField] private float _heatingIntensity = 4f;  // 빛 구체에 닿았을 때 밝기 (강하게)
 
+    [Header("Dust (조준선을 따라 떨어지는 모래 가루)")]
+    [SerializeField] private ParticleSystem _dust;          // 자식 오브젝트의 파티클 (Emission은 꺼두고 코드로만 생성)
+    [SerializeField] private float _dustPerUnitPerSecond = 3f; // 선 길이 1당 초당 생성 수 (선이 길어져도 밀도가 같게)
+    [SerializeField] private float _dustSpread = 0.12f;     // 선에서 퍼지는 폭 (랜덤 오프셋 반경)
+    [SerializeField] private float _dustSideSpeed = 0.25f;  // 생성 직후 좌우로 흩어지는 속도 (떨어지는 건 Gravity Modifier가 담당)
+    [SerializeField] private int _dustMaxPerFrame = 40;     // 한 프레임에 생성하는 최대 수 (프레임 튈 때 폭발 방지)
+    private float _dustCarry; // 소수점으로 남은 생성량을 다음 프레임으로 넘겨주는 누적값
+
     // 리스트
     private HashSet<LightSensor> _previousHit = new HashSet<LightSensor>();
     private HashSet<LightSensor> _currentHit = new HashSet<LightSensor>();
@@ -104,7 +112,6 @@ public class LightAimingLine : MonoBehaviour
 
         if (hit.collider.gameObject.layer == LayerMask.NameToLayer("LightOrb"))
         {
-            AddHit(hit.collider);
             HeatingColor();
             return true;
         }
@@ -121,6 +128,47 @@ public class LightAimingLine : MonoBehaviour
         {
             _lineRenderer.SetPosition(i, _points[i]);
         }
+
+        EmitDust(); // 같은 _points를 그대로 써서 선을 따라 모래 가루를 생성 (경로를 다시 계산하지 않음)
+    }
+    private void EmitDust() // 조준선(_points) 위의 랜덤한 위치에서 파티클을 생성하는 함수
+    {
+        if (_dust == null || _points.Count < 2) return;
+
+        // 1. 선 전체 길이
+        float total = 0f;
+        for (int i = 1; i < _points.Count; i++)
+        {
+            total += Vector3.Distance(_points[i - 1], _points[i]);
+        }
+        if (total < 0.01f) return;
+
+        // 2. 이번 프레임에 만들 개수 (소수점은 다음 프레임으로 넘김)
+        _dustCarry += _dustPerUnitPerSecond * total * Time.deltaTime;
+        int count = Mathf.Min((int)_dustCarry, _dustMaxPerFrame);
+        _dustCarry -= (int)_dustCarry;
+
+        // 3. 선 위의 랜덤 지점에 생성
+        var emitParams = new ParticleSystem.EmitParams();
+        for (int n = 0; n < count; n++)
+        {
+            emitParams.position = PointOnLine(Random.value * total) + (Vector3)(Random.insideUnitCircle * _dustSpread);
+            emitParams.velocity = new Vector3(Random.Range(-_dustSideSpeed, _dustSideSpeed), 0f, 0f); // 아래로 떨어지는 건 Gravity Modifier
+            _dust.Emit(emitParams, 1);
+        }
+    }
+    private Vector3 PointOnLine(float distance) // 선 시작점에서 distance만큼 간 지점의 위치 (구간마다 길이를 빼가며 찾음)
+    {
+        for (int i = 1; i < _points.Count; i++)
+        {
+            float segment = Vector3.Distance(_points[i - 1], _points[i]);
+            if (distance <= segment && segment > 0f)
+            {
+                return Vector3.Lerp(_points[i - 1], _points[i], distance / segment);
+            }
+            distance -= segment;
+        }
+        return _points[_points.Count - 1];
     }
     private void HeatingColor()
     {
