@@ -5,7 +5,7 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
 {
     public PlayerBaseMovementState(PlayerController controller) : base(controller) {}
 
-    protected void ChangeJumpState() // 점프 상태 전환
+    protected virtual void ChangeJumpState() // 점프 상태 전환
     {
         if (GetJumpInput() && controller.CanJump)
         {
@@ -13,11 +13,27 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
         }
     }
 
-    protected void ChangeFallState()  // 낙하 상태 전환
+    protected virtual void ChangeFallState()  // 낙하 상태 전환
     {
         if (controller.RB.linearVelocityY < 0 && !controller.GroundChecker.IsGround())
         {
             controller.ChangeMovementState(controller.FallState);
+        }
+    }
+    
+    protected virtual void ChangeWallGrabState()  // 벽잡기 상태 전환
+    {
+        if (controller.WallChecker.GetWallDirection() * GetMoveInput() > 0)
+        {
+            controller.ChangeMovementState(controller.WallGrabState);
+        }
+    }
+
+    protected virtual void ChangeWallJumpState()  // 벽점프 상태 전환
+    {
+        if (GetJumpInput())
+        {
+            controller.ChangeMovementState(controller.WallJumpState);
         }
     }
 

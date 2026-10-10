@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class GroundChecker : MonoBehaviour
 {
+    [SerializeField] private LayerMask GroundLayer;
     [SerializeField] private Transform _point;
     [SerializeField] private Vector2 _size;
     [SerializeField] private Color _color;
     public bool IsGround()
     {
-        return Physics2D.OverlapBox(_point.position, _size, 0, LayerMask.GetMask("Ground"));
+        return Physics2D.OverlapBox(_point.position, _size, 0, GroundLayer);
     }
     private void OnDrawGizmos()
     {
