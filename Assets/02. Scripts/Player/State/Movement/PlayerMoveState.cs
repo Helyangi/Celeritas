@@ -11,7 +11,7 @@ public class PlayerMoveState : PlayerBaseMovementState
 
     public override void EnterState()
     {
-        // Move 상태 진입 시 처리할 내용 (필요하면 이동 애니메이션 재생 등 추가)
+        controller.Anim.Play("Run");
     }
 
     public override void UpdateState()
