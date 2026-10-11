@@ -40,6 +40,14 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
     protected void Move(float inputMove) // 이동 함수
     {
         controller.RB.linearVelocityX = inputMove * controller.Stats.MoveSpeed;
+        if (inputMove > 0)
+        {
+            controller.transform.rotation = Quaternion.identity;
+        }
+        else if (inputMove < 0)
+        {
+            controller.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
     }
     protected void Jump(Vector2 jumpDirection) // 점프 함수
     {

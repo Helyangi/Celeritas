@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class LightAimingLine : MonoBehaviour
 {
+    [SerializeField] private Transform _lightPos;
+
     [SerializeField] private LayerMask ContactLayer; // 레이가 닿는 레이어 (거울, 빛 구체, 벽 등을 모두 포함해야 함)
     [SerializeField] private int _maxReflection = 10; // 최대 반사 횟수
     [SerializeField] private float _maxDistance = 40; // 조준선 최대 길이 (반사된 구간까지 합친 전체 길이)
@@ -52,8 +54,10 @@ public class LightAimingLine : MonoBehaviour
     {
         if (_material != null) Destroy(_material); // 복제된 머티리얼 정리
     }
-    public RaycastHit2D CalculateLightPath(Vector2 start, Vector2 direction) // 조준선 경로를 계산해서 _points / _waypoints를 채우는 함수
+    public RaycastHit2D CalculateLightPath(Vector2 direction) // 조준선 경로를 계산해서 _points / _waypoints를 채우는 함수
     {
+        Vector2 start = _lightPos.position;
+
         _points.Clear();
         _waypoints.Clear();
         _points.Add(start); // 첫 점은 내 위치
@@ -149,7 +153,7 @@ public class LightAimingLine : MonoBehaviour
         _dustCarry -= (int)_dustCarry;
 
         // 3. 선 위의 랜덤 지점에 생성
-        var emitParams = new ParticleSystem.EmitParams();
+        ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
         for (int n = 0; n < count; n++)
         {
             emitParams.position = PointOnLine(Random.value * total) + (Vector3)(Random.insideUnitCircle * _dustSpread);

@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
 {   
     // 기본 변수
     public Rigidbody2D RB;
+    public Animator Anim;
+    public SpriteRenderer Renderer;
     public PlayerStats Stats;
     public GroundChecker GroundChecker;     // GroundChecker 연결
     public WallChecker WallChecker;         // WallChecker 연결
