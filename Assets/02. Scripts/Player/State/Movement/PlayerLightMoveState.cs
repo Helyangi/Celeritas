@@ -12,6 +12,7 @@ public class PlayerLightMoveState : PlayerBaseMovementState
     {
         controller.CanJump = true;
         _pathIndex = 0; // 항상 경로의 첫 지점부터 시작
+        controller.BoxCol.isTrigger = true;
     }
     
     public override void FixedUpdateState()
@@ -54,5 +55,6 @@ public class PlayerLightMoveState : PlayerBaseMovementState
     public override void ExitState()
     {
         controller.RB.linearVelocityY = 0;
+        controller.BoxCol.isTrigger = false;
     }
 }
