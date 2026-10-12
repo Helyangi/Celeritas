@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {   
     // 기본 변수
     public Rigidbody2D RB;
+    public BoxCollider2D BoxCol;
     public Animator Anim;
     public SpriteRenderer Renderer;
     public PlayerStats Stats;
