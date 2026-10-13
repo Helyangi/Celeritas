@@ -560,6 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   RB: {fileID: 185429241701311293}
+  BoxCol: {fileID: 5804276313229665210}
   Anim: {fileID: 703974037490838236}
   Renderer: {fileID: 7321838487007187810}
   Stats: {fileID: -7191142349213766866}
