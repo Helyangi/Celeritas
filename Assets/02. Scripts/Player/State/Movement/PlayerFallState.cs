@@ -19,6 +19,8 @@ public class PlayerFallState : PlayerBaseMovementState
 
         if (controller.GroundChecker.IsGround())
         {
+            Debug.Log("대기 상테 변환");
+            controller.CanJump = true;
             controller.ChangeMovementState(controller.IdleState);
         }
 
@@ -31,6 +33,6 @@ public class PlayerFallState : PlayerBaseMovementState
     }
     public override void ExitState()
     {
-        controller.CanJump = true;
+        
     }
 }
