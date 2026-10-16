@@ -56,5 +56,6 @@ public class PlayerLightMoveState : PlayerBaseMovementState
     {
         controller.RB.linearVelocityY = 0;
         controller.BoxCol.isTrigger = false;
+        controller.CanJump = true;
     }
 }

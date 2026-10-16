@@ -104,7 +104,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.05
-  m_PointLightOuterRadius: 4
+  m_PointLightOuterRadius: 6
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -489,7 +489,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: f9056697ff3ca48f0853423e781d11d2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -600,7 +600,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   _point: {fileID: 5244428564179657784}
-  _size: {x: 0.49, y: 0.1}
+  _size: {x: 0.48, y: 0.1}
   _color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &8056227787651364586
 MonoBehaviour:

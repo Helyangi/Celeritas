@@ -1099,6 +1099,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 185429241701311293, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4200458519128855453, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.946
@@ -1257,6 +1261,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[0].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[1].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[2].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[3].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[4].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[5].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[6].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[7].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[8].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+    - target: {fileID: 7211729201646578653, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
+      propertyPath: _sfxMappings.Array.data[9].SFXData
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
     - target: {fileID: 8791599038385086407, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
       propertyPath: m_Name
       value: SoundManager
