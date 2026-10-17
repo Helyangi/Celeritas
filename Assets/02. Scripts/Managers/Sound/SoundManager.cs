@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -35,7 +36,28 @@ public class SoundManager : MonoBehaviour
         }
 
         InitDictionary();
+        InitPool();
+    }
+    public void PlaySFX(SFXType type, Transform spawnTransform)
+    {
+        if (!_sfxDictionary.TryGetValue(type, out SFXData data))
+        {
+            Debug.Log($"[SoundManager] 등록되지 않은 SFX 타입입니다: {type}");
+            return;
+        }
 
+        SFXObject obj = null;
+
+        if (_sfxPool.Count > 0)
+        {
+            obj = _sfxPool.Dequeue();
+        }
+        else
+        {
+            obj = CreateNewSFXObject();
+        }
+
+        obj.Play(data, spawnTransform.position);
     }
     private void InitDictionary()
     {
@@ -58,10 +80,7 @@ public class SoundManager : MonoBehaviour
     {
         SFXObject obj = Instantiate(_sfxObject, _poolContainer);
         obj.gameObject.SetActive(false);
+        obj.Init(_sfxPool);
         return obj;
-    }
-    public void PlaySFX(SFXType type, Transform transform)
-    {
-        
     }
 }

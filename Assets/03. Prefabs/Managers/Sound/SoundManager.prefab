@@ -47,4 +47,7 @@ MonoBehaviour:
   _sfxObject: {fileID: 4213190017090142362, guid: 6ac7d6aab34824c33bacc5aeafcfc841, type: 3}
   _initialPoolSize: 10
   _sfxMappings:
-  - {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+  - SFXType: 0
+    SFXData: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+  - SFXType: 1
+    SFXData: {fileID: 11400000, guid: 4d3e98a8189b2473eabe4e811841cc5c, type: 2}
