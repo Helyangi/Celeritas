@@ -1,16 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SFXObject : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private AudioSource _audioSource;
+    private Queue<SFXObject> poolQueue;
+    public void Init(Queue<SFXObject> pool)
     {
-        
+        poolQueue = pool;
+        ReturnToPool();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Play(SFXData data, Vector3 pos)
     {
-        
+        transform.position = pos;
+        _audioSource.clip = data.Clip;
+
+        gameObject.SetActive(true);
+        _audioSource.Play();
+        StartCoroutine(DelayReturnToPool(_audioSource.clip.length / _audioSource.pitch));
+    }
+    private void ReturnToPool()
+    {
+        poolQueue.Enqueue(this);
+    }
+    private IEnumerator DelayReturnToPool(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        _audioSource.Stop();
+        gameObject.SetActive(false);
+        ReturnToPool();
     }
 }

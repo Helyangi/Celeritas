@@ -2,5 +2,6 @@ using UnityEngine;
 
 public enum SFXType
 {
-    PlayerJump
+    PlayerJump,
+    PlayerGrabLanding
 }
