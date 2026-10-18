@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639279167876348700
+  platformSettingsDirtyTick: 639279304242151290
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 126
       height: 21
-    spriteID: cbedcb26bfb274c9ea2e3f4f0b95454b
+    spriteID: 4e4ae50140fc84caba7b8297868cf77c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,7 +161,7 @@ ScriptedImporter:
       y: 0
       width: 32
       height: 32
-    spriteID: 63c8732a533dc499486618459d4aa432
+    spriteID: bafd9a143cd9e47028e3d3b787f7d226
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -182,7 +182,7 @@ ScriptedImporter:
       y: 0
       width: 32
       height: 32
-    spriteID: eef6b6a3b947f4cfa9098278e0b9fc51
+    spriteID: a161690d2da7b4fa8aa46164c84f04bf
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -203,7 +203,7 @@ ScriptedImporter:
       y: 0
       width: 32
       height: 32
-    spriteID: 753cfb8c148ad4d50acc7313779dba0d
+    spriteID: 9ed57118251fd43db88d60f3e7cc932b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -224,7 +224,7 @@ ScriptedImporter:
       y: 0
       width: 32
       height: 32
-    spriteID: e2bc0229769ba40aa9e5778378827931
+    spriteID: e54c15d4c4a80400cbee64ee98b42389
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -255,7 +255,7 @@ ScriptedImporter:
         y: 2
         width: 126
         height: 21
-      spriteId: cbedcb26bfb274c9ea2e3f4f0b95454b
+      spriteId: 4e4ae50140fc84caba7b8297868cf77c
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
