@@ -10,6 +10,7 @@ public class PlayerLightMoveState : PlayerBaseMovementState
     
     public override void EnterState()
     {
+        SoundManager.Instance.PlaySFX(SFXType.PlayerLightShot, controller.transform);
         controller.CanJump = true;
         _pathIndex = 0; // 항상 경로의 첫 지점부터 시작
         controller.BoxCol.isTrigger = true;
@@ -54,6 +55,7 @@ public class PlayerLightMoveState : PlayerBaseMovementState
     
     public override void ExitState()
     {
+        SoundManager.Instance.PlaySFX(SFXType.PlayerLightArrival, controller.transform);
         controller.RB.linearVelocityY = 0;
         controller.BoxCol.isTrigger = false;
         controller.CanJump = true;
