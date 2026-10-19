@@ -33,6 +33,7 @@ public class SoundManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         InitDictionary();

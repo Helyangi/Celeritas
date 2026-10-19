@@ -8,7 +8,7 @@ public class PlayerFallState : PlayerBaseMovementState
     
     public override void EnterState()
     {
-        
+        controller.Anim.Play("Fall");
     }
 
     public override void UpdateState()
