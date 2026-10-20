@@ -106,6 +106,6 @@ public class PlayerController : MonoBehaviour
     // 리스폰 함수
     public void Respawn()
     {
-        
+        transform.position = _checkpoint;
     }
 }

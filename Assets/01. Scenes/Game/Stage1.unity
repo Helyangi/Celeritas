@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4423204367827982431, guid: fd00617569a6b45d999d43f26271b3ff, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 4423204367827982431, guid: fd00617569a6b45d999d43f26271b3ff, type: 3}
       propertyPath: m_LocalRotation.x
@@ -161,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4423204367827982431, guid: fd00617569a6b45d999d43f26271b3ff, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.38268343
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 4423204367827982431, guid: fd00617569a6b45d999d43f26271b3ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4423204367827982431, guid: fd00617569a6b45d999d43f26271b3ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -45
+      value: 135
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2277,6 +2277,7 @@ GameObject:
   - component: {fileID: 2046442439}
   - component: {fileID: 2046442438}
   - component: {fileID: 2046442437}
+  - component: {fileID: 2046442440}
   m_Layer: 0
   m_Name: DeadLine
   m_TagString: Untagged
@@ -2404,6 +2405,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2046442440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046442436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d65d17ee49e345ecb27f7ef0953f9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeadLine
 --- !u!1 &2101557262
 GameObject:
   m_ObjectHideFlags: 0
