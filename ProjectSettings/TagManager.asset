@@ -44,8 +44,23 @@ TagManager:
   - name: Background
     uniqueID: 1950933979
     locked: 0
+  - name: BackObject
+    uniqueID: 1149780535
+    locked: 0
+  - name: BackVFX
+    uniqueID: 2520131569
+    locked: 0
+  - name: Character
+    uniqueID: 1853528879
+    locked: 0
   - name: Player
     uniqueID: 856001603
+    locked: 0
+  - name: FrontVFX
+    uniqueID: 2488121919
+    locked: 0
+  - name: FrontObject
+    uniqueID: 1090728867
     locked: 0
   m_RenderingLayers:
   - Default
