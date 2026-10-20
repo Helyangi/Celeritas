@@ -81,7 +81,8 @@ public class LightAimingLine : MonoBehaviour
 
             AddHit(hit.collider);
 
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Mirror")) // 거울이 아니면(빛 구체, 벽 등) 여기서 끝
+            bool isFrontSide = Vector2.Dot(hit.normal, -hit.transform.right) > 0.99f; // 거울 앞면 맞았는지 검사
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Mirror") && isFrontSide) // 거울이 아니면(빛 구체, 벽 등) 여기서 끝
             {
                 // 거울이면: 이동용 꺾임 지점 저장 → 남은 거리 갱신 → 반사 방향 계산 → 다음 레이 준비
                 _waypoints.Add(hit.point + hit.normal * _lightMoveCornerOffset);
