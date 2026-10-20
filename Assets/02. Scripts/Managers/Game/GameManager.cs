@@ -17,6 +17,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Application.targetFrameRate = 60; // 목표 프레임 설정
+            Application.targetFrameRate = 60; // 목표 프레임 설정
     }
 }
