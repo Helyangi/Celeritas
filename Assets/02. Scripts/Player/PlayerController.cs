@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.LowLevelPhysics2D;
@@ -35,7 +36,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool CanJump = true;
     [HideInInspector] public List<Vector2> LightPath = new List<Vector2>(); // 빛 이동 시 순서대로 거쳐갈 경로 (Aiming 상태가 채우고 LightMove 상태가 읽음)
 
+    // 리스폰 & 체크포인트 관련 변수
     private Vector3 _checkpoint;
+    private bool _isRespawning;
 
     private void Awake()
     {
@@ -44,6 +47,7 @@ public class PlayerController : MonoBehaviour
             RB = GetComponent<Rigidbody2D>();
         }
         
+        // 초기 체크포인트 설정
         _checkpoint = transform.position;
     }
 
@@ -69,6 +73,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // 리스폰 중 입력 감지 X
+        if (_isRespawning) return;
+        
         // 입력 처리는 컨트롤러가 아니라 각 State 내부에서 직접 담당한다 (추후 InputManager 싱글톤 교체 대비)
         _currentMovementState?.UpdateState();
         _currentActionState?.UpdateState();
@@ -76,6 +83,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 리스폰 중 입력 감지 X
+        if (_isRespawning) return;
+        
         // 물리 갱신이 필요한 상태 로직 처리
         _currentMovementState?.FixedUpdateState();
         _currentActionState?.FixedUpdateState();
@@ -100,12 +110,34 @@ public class PlayerController : MonoBehaviour
     // 체크포인트 갱신 함수
     public void SetCheckpoint(Vector3 newCheckpoint)
     {
+        if (_isRespawning) return;
         _checkpoint = newCheckpoint;
     }
     
     // 리스폰 함수
     public void Respawn()
     {
+        if (_isRespawning) return;
+        StartCoroutine(RespawnCoroutine());
+    }
+
+    private IEnumerator RespawnCoroutine()
+    {
+        _isRespawning = true;
+        RB.simulated = false;
+        
+        ChangeMovementState(IdleState);
+        ChangeActionState(AimingState);
+        
+        yield return new WaitForSeconds(Stats.RespawnTime);
+        
+        LightPath.Clear();
+        CanJump = true;
+        
         transform.position = _checkpoint;
+        RB.linearVelocity = Vector2.zero;
+        
+        RB.simulated = true;
+        _isRespawning = false;
     }
 }
