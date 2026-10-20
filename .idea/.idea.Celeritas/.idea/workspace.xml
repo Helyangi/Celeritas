@@ -9,6 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="99959ba5-adb7-42de-b7a6-6a0216b0a0d4" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Celeritas/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Celeritas/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Game/Stage1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Game/Stage1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Scripts/Player/PlayerStats.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +25,65 @@
     <commands />
     <urls />
   </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="7.797820888268351E-19" />
+      <entry key="MS500" value="3.9728242203318026E-4" />
+      <entry key="S2" value="0.3123750965468417" />
+      <entry key="S5" value="1.2485080734934868" />
+      <entry key="S10" value="2.4830216106220755" />
+      <entry key="S30" value="6.177312303638392" />
+      <entry key="S60" value="8.531706697976427" />
+      <entry key="M2" value="11.836959972996084" />
+      <entry key="M5" value="37.74457175615641" />
+      <entry key="M10" value="105.52568452647755" />
+      <entry key="M15" value="169.03308372428978" />
+      <entry key="M30" value="298.71874770315105" />
+      <entry key="H1" value="417.00110021752937" />
+      <entry key="H2" value="499.99975916190215" />
+      <entry key="H4" value="549.6923540143376" />
+      <entry key="D1" value="596.1133532343624" />
+      <entry key="W1" value="604.5747249682232" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0000000014313266" />
+      <entry key="MS500" value="1.0170273767533333" />
+      <entry key="S2" value="1.3612325994808814" />
+      <entry key="S5" value="1.6654489966036694" />
+      <entry key="S10" value="1.815750572542655" />
+      <entry key="S30" value="1.93437052297806" />
+      <entry key="S60" value="1.9666342763912663" />
+      <entry key="M2" value="1.9895911392416181" />
+      <entry key="M5" value="2.557394253331749" />
+      <entry key="M10" value="5.242955609571285" />
+      <entry key="M15" value="8.409588679365996" />
+      <entry key="M30" value="15.78813537845876" />
+      <entry key="H1" value="23.028757035476207" />
+      <entry key="H2" value="28.24770325203068" />
+      <entry key="H4" value="31.40414733421444" />
+      <entry key="D1" value="34.36743917972893" />
+      <entry key="W1" value="34.908781421373945" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.6107274301520156E-4" />
+      <entry key="MS500" value="0.17561022515473526" />
+      <entry key="S2" value="1.1141675589971278" />
+      <entry key="S5" value="2.5558021506217488" />
+      <entry key="S10" value="4.080812587068235" />
+      <entry key="S30" value="8.02743961122667" />
+      <entry key="S60" value="10.453725620875364" />
+      <entry key="M2" value="13.800746178063923" />
+      <entry key="M5" value="40.278383661169094" />
+      <entry key="M10" value="110.73446351557216" />
+      <entry key="M15" value="177.4037259764016" />
+      <entry key="M30" value="314.46933198194597" />
+      <entry key="H1" value="440.00240876662735" />
+      <entry key="H2" value="528.2306417656068" />
+      <entry key="H4" value="581.0871586024676" />
+      <entry key="D1" value="630.4790897488925" />
+      <entry key="W1" value="639.4832593580953" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -31,23 +93,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "feat/checkpoint-respawn",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.3.19f1/Unity.app/Contents/MacOS/Unity" />
