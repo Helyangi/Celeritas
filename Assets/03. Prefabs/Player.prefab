@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 0.1
   m_LightVolumeEnabled: 1
-  m_ApplyToSortingLayers: dbe3487400000000
+  m_ApplyToSortingLayers: 00000000dbe3487437428844f12736962f9b7a6e438c05333fba4d94a3330341
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -94,10 +94,10 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_ShadowsEnabled: 1
   m_ShadowIntensity: 0.75
-  m_ShadowSoftness: 0.3
+  m_ShadowSoftness: 1
   m_ShadowSoftnessFalloffIntensity: 0.5
-  m_ShadowVolumeIntensityEnabled: 0
-  m_ShadowVolumeIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 1
+  m_ShadowVolumeIntensity: 1
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -222,7 +222,7 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 0, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -277,10 +277,10 @@ MonoBehaviour:
     m_Bits: 960
   _maxReflection: 10
   _maxDistance: 40
-  _heatingColor: {r: 1, g: 1, b: 0, a: 0.39215687}
+  _heatingColor: {r: 1, g: 1, b: 0, a: 0.78431374}
   _coolingColor: {r: 1, g: 1, b: 0, a: 0.19607843}
   _coolingIntensity: 1
-  _heatingIntensity: 3
+  _heatingIntensity: 1.5
   _dust: {fileID: 5819770550707606022}
   _dustPerUnitPerSecond: 3
   _dustSpread: 0.12
@@ -396,16 +396,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 856001603
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1449246210235388070, guid: c8d2348a6c77241a5a53398e21effeb1, type: 3}
+  m_Sprite: {fileID: 8981924485772189033, guid: a19877648041f42199c765f6819a1c24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.19, y: 0.63}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
