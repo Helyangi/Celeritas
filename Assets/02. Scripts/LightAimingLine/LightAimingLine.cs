@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +9,13 @@ public class LightAimingLine : MonoBehaviour
     [SerializeField] private LayerMask ContactLayer; // 레이가 닿는 레이어 (거울, 빛 구체, 벽 등을 모두 포함해야 함)
     [SerializeField] private int _maxReflection = 10; // 최대 반사 횟수
     [SerializeField] private float _maxDistance = 40; // 조준선 최대 길이 (반사된 구간까지 합친 전체 길이)
+    [SerializeField] private float _width = 0.2f;
     [SerializeField] private Color _heatingColor;
     [SerializeField] private Color _coolingColor;
     private float _lightMoveCornerOffset = 0.6f; // 빛 이동 시 거울 꺾임 지점을 거울 표면에서 띄우는 거리 (플레이어 몸 크기보다 크게)
     private readonly List<Vector3> _points = new List<Vector3>(); // 조준선을 그릴 점들 (내 위치 -> 거울 꺾임 지점들 -> 끝점)
     private readonly List<Vector2> _waypoints = new List<Vector2>(); // 실제 이동에 쓸 거울 꺾임 지점들 (몸이 안 끼도록 거울에서 띄운 위치)
-    private const float ReflectOffset = 0.01f; // 반사 후 다시 쏠 때 거울 표면에 또 맞지 않도록 띄우는 거리
+    private const float ReflectOffset = .01f; // 반사 후 다시 쏠 때 거울 표면에 또 맞지 않도록 띄우는 거리
 
     [Header("Glow (Bloom용 HDR 밝기)")]
     [SerializeField] private float _coolingIntensity = 2f;   // 빛 구체에 안 닿았을 때 밝기 (은은하게)
@@ -39,8 +41,8 @@ public class LightAimingLine : MonoBehaviour
     {
         if (_lineRenderer == null) _lineRenderer = GetComponent<LineRenderer>(); // 예외 처리
 
-        _lineRenderer.startWidth = 0.2f;
-        _lineRenderer.endWidth = 0.2f;
+        _lineRenderer.startWidth = _width;
+        _lineRenderer.endWidth = _width;
         _lineRenderer.numCornerVertices = 5; // 거울에서 꺾이는 부분을 둥글게 이어줌
 
         _material = _lineRenderer.material; // 인스턴스 복제본 (원본 .mat 파일은 건드리지 않음)
@@ -62,14 +64,15 @@ public class LightAimingLine : MonoBehaviour
         _waypoints.Clear();
         _points.Add(start); // 첫 점은 내 위치
 
-        Vector2 origin = start; // 이번 레이를 쏘는 시작점
+        Vector2 origin = start + direction * .75f; // 이번 레이를 쏘는 시작점 !!!이거 나중에 고쳐야 함!!!
         Vector2 dir = direction; // 이번 레이의 방향
+        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
         float remaining = _maxDistance; // 남은 조준선 길이
         RaycastHit2D hit = default;
 
         for (int i = 0; i <= _maxReflection; i++)
         {
-            hit = Physics2D.Raycast(origin, dir, remaining, ContactLayer);
+            hit = Physics2D.BoxCast(origin, new Vector2(_width, _width), angle, dir, remaining, ContactLayer);
 
             if (!hit) // 아무것도 안 닿음 → 남은 거리만큼 직진한 곳이 끝점
             {
@@ -91,7 +94,7 @@ public class LightAimingLine : MonoBehaviour
                 if (remaining <= 0f) break;
 
                 dir = Vector2.Reflect(dir, hit.normal); // 반사 공식: r = d - 2(d·n)n
-                origin = hit.point + hit.normal * ReflectOffset;
+                origin = hit.centroid + hit.normal * ReflectOffset;
             }
             else
             {
@@ -157,8 +160,8 @@ public class LightAimingLine : MonoBehaviour
         ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
         for (int n = 0; n < count; n++)
         {
-            emitParams.position = PointOnLine(Random.value * total) + (Vector3)(Random.insideUnitCircle * _dustSpread);
-            emitParams.velocity = new Vector3(Random.Range(-_dustSideSpeed, _dustSideSpeed), 0f, 0f); // 아래로 떨어지는 건 Gravity Modifier
+            emitParams.position = PointOnLine(UnityEngine.Random.value * total) + (Vector3)(UnityEngine.Random.insideUnitCircle * _dustSpread);
+            emitParams.velocity = new Vector3(UnityEngine.Random.Range(-_dustSideSpeed, _dustSideSpeed), 0f, 0f); // 아래로 떨어지는 건 Gravity Modifier
             _dust.Emit(emitParams, 1);
         }
     }
