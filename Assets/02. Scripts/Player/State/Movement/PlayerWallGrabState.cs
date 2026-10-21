@@ -11,7 +11,7 @@ public class PlayerWallGrabState : PlayerBaseMovementState
 
     public override void EnterState()
     {
-        SoundManager.Instance.PlaySFX(SFXType.PlayerGrabLanding, controller.transform);
+        SoundManager.Instance.PlaySFX(SFXType.PlayerGrabLanding, controller.transform.position);
         _originalGravityScale = controller.RB.gravityScale;
         controller.RB.gravityScale = 0;
         controller.RB.linearVelocity = Vector2.zero;

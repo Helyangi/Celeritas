@@ -52,7 +52,7 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
     protected void Jump(Vector2 jumpDirection) // 점프 함수
     {
         controller.Anim.Play("Jump");
-        SoundManager.Instance.PlaySFX(SFXType.PlayerJump, controller.transform);
+        SoundManager.Instance.PlaySFX(SFXType.PlayerJump, controller.transform.position);
         controller.RB.linearVelocityY = 0;
         controller.RB.AddForce(jumpDirection * controller.Stats.JumpForce, ForceMode2D.Impulse);
     }
