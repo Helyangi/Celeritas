@@ -56,6 +56,11 @@ public class LightAimingLine : MonoBehaviour
     {
         if (_material != null) Destroy(_material); // 복제된 머티리얼 정리
     }
+    public void SetAiming(bool value)
+    {
+        _lineRenderer.enabled = value;
+        enabled = value;
+    }
     public RaycastHit2D CalculateLightPath(Vector2 direction) // 조준선 경로를 계산해서 _points / _waypoints를 채우는 함수
     {
         Vector2 start = _lightPos.position;

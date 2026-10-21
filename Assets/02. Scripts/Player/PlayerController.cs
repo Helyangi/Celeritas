@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     public PlayerWallJumpState WallJumpState;   // 벽점프 상태
 
     // 행동 상태 정의
-    public PlayerAimingState AimingState; // 아무것도 안하는 상태
+    public PlayerAimingState AimingState; // 조준 상태
+    public PlayerNoneState NoneState; // 아무것도 안하는 상태
 
     // 이름을 못 정했는데 마땅히 적을 곳을 생각 못해서 여기 적어봄
     [HideInInspector] public bool CanJump = true;
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
         // 행동 상태 변수 초기화
         AimingState = new PlayerAimingState(this);
+        NoneState = new PlayerNoneState(this);
 
         // 기본 상태 설정
         ChangeMovementState(IdleState);
