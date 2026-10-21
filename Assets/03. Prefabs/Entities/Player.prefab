@@ -277,7 +277,7 @@ MonoBehaviour:
     m_Bits: 960
   _maxReflection: 10
   _maxDistance: 40
-  _width: 0.2
+  _width: 0.15
   _heatingColor: {r: 1, g: 1, b: 0, a: 0.78431374}
   _coolingColor: {r: 1, g: 1, b: 0, a: 0.19607843}
   _coolingIntensity: 1
@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 8655686335079057686}
   - component: {fileID: 7321838487007187810}
   - component: {fileID: 703974037490838236}
+  - component: {fileID: 7415256605498379364}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -433,6 +434,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7415256605498379364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6986655692229724989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c03aed7b0ae242109ee158a07998ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationEventReceiver
+  _footTransform: {fileID: 5244428564179657784}
 --- !u!1 &7618313748160664770
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +599,7 @@ MonoBehaviour:
   MoveSpeed: 7.5
   JumpForce: 12.5
   LightMoveSpeed: 35
+  RespawnTime: 0
 --- !u!114 &1260692395035282599
 MonoBehaviour:
   m_ObjectHideFlags: 0

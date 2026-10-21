@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a0851d049c1446eea0e89d825996226, type: 3}
-  m_Name: PlayerLightShot
+  m_Name: PlayerLightShotSFX
   m_EditorClassIdentifier: Assembly-CSharp::SFXData
   Type: 3
   Clip: {fileID: 8300000, guid: ab94f3cd4b1374b4aad663efb4923d0f, type: 3}

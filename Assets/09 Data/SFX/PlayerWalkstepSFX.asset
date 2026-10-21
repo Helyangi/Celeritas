@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a0851d049c1446eea0e89d825996226, type: 3}
-  m_Name: PlayerLightArrival
+  m_Name: PlayerWalkstepSFX
   m_EditorClassIdentifier: Assembly-CSharp::SFXData
-  Type: 2
-  Clip: {fileID: 8300000, guid: e959bd28bc686462197fd8eb15be4882, type: 3}
+  Type: 4
+  Clip: {fileID: 8300000, guid: 1561ebeae86bf40848710c0307001a99, type: 3}

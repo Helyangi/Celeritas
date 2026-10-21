@@ -39,7 +39,7 @@ public class SoundManager : MonoBehaviour
         InitDictionary();
         InitPool();
     }
-    public void PlaySFX(SFXType type, Transform spawnTransform)
+    public void PlaySFX(SFXType type, Vector2 spawnPos)
     {
         if (!_sfxDictionary.TryGetValue(type, out SFXData data))
         {
@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
             obj = CreateNewSFXObject();
         }
 
-        obj.Play(data, spawnTransform.position);
+        obj.Play(data, spawnPos);
     }
     private void InitDictionary()
     {

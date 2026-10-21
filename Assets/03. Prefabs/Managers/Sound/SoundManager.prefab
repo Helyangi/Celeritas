@@ -56,6 +56,8 @@ MonoBehaviour:
     SFXData: {fileID: 11400000, guid: 1e58c9287e30f4d46b4fd69dceea17a9, type: 2}
   - SFXType: 3
     SFXData: {fileID: 11400000, guid: 4f9fad22ffdec4fb1804cce3602bb214, type: 2}
+  - SFXType: 4
+    SFXData: {fileID: 11400000, guid: d66a1b28d04b84f8aa4943ed3a2d285a, type: 2}
 --- !u!82 &4892510683170529812
 AudioSource:
   m_ObjectHideFlags: 0
