@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5f398fe9df08b495fb85468110df90f9
+guid: 38a5447c5a68a4637bb172cf000889fc
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 0
       width: 24
       height: 28
-    spriteID: 3f0a99a7c0d9347a79ad65623d58ac86
+    spriteID: a4a435e096abf40f78c64d5b1bdeb315
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
       y: 28
       width: 24
       height: 28
-    spriteID: b4d98ae65cfae49f1ad3d02a3bd99416
+    spriteID: f2f29f3788e774984ab1b78bfa9a1434
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -196,7 +196,7 @@ ScriptedImporter:
       value3: 0
     guid: 0
     name: LampOff
-    layerFlags: 3
+    layerFlags: 35
     layerType: 1
     blendMode: 0
     cells: []
@@ -224,7 +224,7 @@ ScriptedImporter:
         y: 3
         width: 24
         height: 28
-      spriteId: 3f0a99a7c0d9347a79ad65623d58ac86
+      spriteId: a4a435e096abf40f78c64d5b1bdeb315
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -265,7 +265,7 @@ ScriptedImporter:
         y: 3
         width: 24
         height: 28
-      spriteId: b4d98ae65cfae49f1ad3d02a3bd99416
+      spriteId: f2f29f3788e774984ab1b78bfa9a1434
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
