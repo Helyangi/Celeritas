@@ -6,5 +6,6 @@ public enum SFXType
     PlayerGrabLanding,
     PlayerLightArrival,
     PlayerLightShot,
-    PlayerWalkstep
+    PlayerWalkstep,
+    Checkpoint
 }

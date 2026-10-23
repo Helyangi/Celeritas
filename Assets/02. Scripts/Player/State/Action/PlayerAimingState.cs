@@ -18,7 +18,7 @@ public class PlayerAimingState : PlayerBaseActionState
 
         if (_canLightMove && GetMouseInput())
         {
-            controller.LightAimingLine.SaveLightPath(hit, controller.LightPath); // 5. 이동 경로를 컨트롤러에 저장하고
+            controller.LightAimingLine.SaveLightPath(hit, controller.LightAimingLine.LightPath); // 5. 이동 경로를 컨트롤러에 저장하고
             controller.ChangeMovementState(controller.LightMoveState); // 빛 이동 상태로 전환
         }
     }
