@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
 
     // 이름을 못 정했는데 마땅히 적을 곳을 생각 못해서 여기 적어봄
     [HideInInspector] public bool CanJump = true;
-    [HideInInspector] public List<Vector2> LightPath = new List<Vector2>(); // 빛 이동 시 순서대로 거쳐갈 경로 (Aiming 상태가 채우고 LightMove 상태가 읽음)
 
     // 리스폰 & 체크포인트 관련 변수
     private Vector3 _checkpoint;
@@ -133,7 +132,7 @@ public class PlayerController : MonoBehaviour
         
         yield return new WaitForSeconds(Stats.RespawnTime);
         
-        LightPath.Clear();
+        LightAimingLine.LightPath.Clear();
         CanJump = true;
         
         transform.position = _checkpoint;

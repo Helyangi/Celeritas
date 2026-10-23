@@ -280,6 +280,7 @@ MonoBehaviour:
   _width: 0.15
   _heatingColor: {r: 1, g: 1, b: 0, a: 0.78431374}
   _coolingColor: {r: 1, g: 1, b: 0, a: 0.19607843}
+  LightPath: []
   _coolingIntensity: 1
   _heatingIntensity: 1.5
   _dust: {fileID: 5819770550707606022}
@@ -584,7 +585,6 @@ MonoBehaviour:
   WallChecker: {fileID: 8056227787651364586}
   LightAimingLine: {fileID: 2920367240162233314}
   CanJump: 1
-  LightPath: []
 --- !u!114 &-7191142349213766866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,8 +680,8 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1774835727
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Time: 0.25

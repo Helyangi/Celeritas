@@ -18,7 +18,7 @@ public class PlayerLightMoveState : PlayerBaseMovementState
         controller.CanJump = true;
         _pathIndex = 0; // 항상 경로의 첫 지점부터 시작
         controller.BoxCol.isTrigger = true;
-        LightRotate(controller.LightPath[_pathIndex]);
+        LightRotate(controller.LightAimingLine.LightPath[_pathIndex]);
     }
     
     public override void FixedUpdateState()
@@ -28,7 +28,7 @@ public class PlayerLightMoveState : PlayerBaseMovementState
     
     private void LightMove()
     {
-        List<Vector2> path = controller.LightPath;
+        List<Vector2> path = controller.LightAimingLine.LightPath;
 
         // 경로가 비었거나 이미 다 지나왔으면 낙하 상태로 전환
         if (_pathIndex >= path.Count)
