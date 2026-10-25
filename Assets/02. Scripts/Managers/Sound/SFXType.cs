@@ -7,5 +7,7 @@ public enum SFXType
     PlayerLightArrival,
     PlayerLightShot,
     PlayerWalkstep,
-    Checkpoint
+    Checkpoint,
+    Death,
+    Respawn
 }

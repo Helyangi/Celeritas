@@ -72,13 +72,13 @@ public class LightAimingLine : MonoBehaviour
 
         Vector2 origin = start + direction * .75f; // 이번 레이를 쏘는 시작점 !!!이거 나중에 고쳐야 함!!!
         Vector2 dir = direction; // 이번 레이의 방향
-        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         float remaining = _maxDistance; // 남은 조준선 길이
         RaycastHit2D hit = default;
 
         for (int i = 0; i <= _maxReflection; i++)
         {
-            hit = Physics2D.BoxCast(origin, new Vector2(_width, _width), angle, dir, remaining, ContactLayer);
+            hit = Physics2D.BoxCast(origin, new Vector2(0.001f, _width), angle, dir, remaining, ContactLayer);
 
             if (!hit) // 아무것도 안 닿음 → 남은 거리만큼 직진한 곳이 끝점
             {
@@ -86,7 +86,7 @@ public class LightAimingLine : MonoBehaviour
                 break;
             }
 
-            _points.Add(hit.point); // 닿은 지점 = 선이 꺾이거나 끝나는 점
+            _points.Add(hit.centroid); // 닿은 지점 = 선이 꺾이거나 끝나는 점
 
             AddHit(hit.collider);
 
@@ -94,13 +94,14 @@ public class LightAimingLine : MonoBehaviour
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Mirror") && isFrontSide) // 거울이 아니면(빛 구체, 벽 등) 여기서 끝
             {
                 // 거울이면: 이동용 꺾임 지점 저장 → 남은 거리 갱신 → 반사 방향 계산 → 다음 레이 준비
-                _waypoints.Add(hit.point + hit.normal * _lightMoveCornerOffset);
+                _waypoints.Add(hit.centroid);
 
                 remaining -= hit.distance;
                 if (remaining <= 0f) break;
 
                 dir = Vector2.Reflect(dir, hit.normal); // 반사 공식: r = d - 2(d·n)n
                 origin = hit.centroid + hit.normal * ReflectOffset;
+                angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             }
             else
             {

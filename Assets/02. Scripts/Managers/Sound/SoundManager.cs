@@ -61,6 +61,9 @@ public class SoundManager : MonoBehaviour
     }
     private void InitDictionary()
     {
+        _poolContainer = new GameObject("PoolContainer").transform;
+        _poolContainer.SetParent(gameObject.transform);
+
         foreach (SFXMapping mapping in _sfxMappings)
         {
             if (!_sfxDictionary.ContainsKey(mapping.SFXType))

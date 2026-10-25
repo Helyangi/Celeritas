@@ -20,7 +20,7 @@ public class WallChecker : MonoBehaviour
             point.position,
             _size,
             0,
-            LayerMask.GetMask("Wall")
+            LayerMask.GetMask("Block")
         );
     }
 

@@ -33,6 +33,7 @@ public class Checkpoint : MonoBehaviour
     }
     private void OffSave()
     {
+        _anim.Play("Off");
         _isSave = false;
         _light.intensity = 0;
     }

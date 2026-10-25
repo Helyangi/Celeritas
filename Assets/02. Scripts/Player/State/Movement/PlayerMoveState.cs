@@ -19,6 +19,7 @@ public class PlayerMoveState : PlayerBaseMovementState
         // 상태 변경 조건 체크
         ChangeJumpState();
         ChangeFallState();
+        ChangeWallGrabState();
 
         // 이 State가 직접 입력을 받아서 저장 및 전환 여부를 판단한다
         _moveInput = GetMoveInput();

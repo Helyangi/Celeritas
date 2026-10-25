@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerLightMoveState : PlayerBaseMovementState
 {
     private int _pathIndex; // 지금 향하고 있는 경로 번호 (controller.LightPath의 인덱스)
-    private const float ArriveDistance = 0.1f; // 목표 지점에 이 거리 안으로 들어오면 도착한 것으로 처리
+    private const float ArriveDistance = 0.01f; // 목표 지점에 이 거리 안으로 들어오면 도착한 것으로 처리
     private float _initialGravityScale;
     public PlayerLightMoveState(PlayerController controller) : base(controller) {}
     
@@ -15,7 +15,6 @@ public class PlayerLightMoveState : PlayerBaseMovementState
         controller.Anim.Play("LightMove");
         controller.ChangeActionState(controller.NoneState);
         SoundManager.Instance.PlaySFX(SFXType.PlayerLightShot, controller.transform.position);
-        controller.CanJump = true;
         _pathIndex = 0; // 항상 경로의 첫 지점부터 시작
         controller.BoxCol.isTrigger = true;
         LightRotate(controller.LightAimingLine.LightPath[_pathIndex]);
