@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour
         ChangeActionState(AimingState);
         
         yield return new WaitForSeconds(Stats.RespawnTime);
+        SoundManager.Instance.PlaySFX(SFXType.Respawn, transform.position);
         
         LightAimingLine.LightPath.Clear();
         CanJump = true;

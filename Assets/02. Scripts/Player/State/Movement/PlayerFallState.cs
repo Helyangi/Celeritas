@@ -19,8 +19,8 @@ public class PlayerFallState : PlayerBaseMovementState
 
         if (controller.GroundChecker.IsGround())
         {
-            SoundManager.Instance.PlaySFX(SFXType.PlayerGrabLanding, controller.transform.position);
             controller.CanJump = true;
+            SoundManager.Instance.PlaySFX(SFXType.PlayerGrabLanding, controller.transform.position);
             controller.ChangeMovementState(controller.IdleState);
         }
 

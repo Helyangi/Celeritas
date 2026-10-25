@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 693556026550211657}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0, z: 0}
+  m_LocalPosition: {x: -0.25, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -274,7 +274,7 @@ MonoBehaviour:
   _lightPos: {fileID: 2714613113821141917}
   ContactLayer:
     serializedVersion: 2
-    m_Bits: 960
+    m_Bits: 704
   _maxReflection: 10
   _maxDistance: 100
   _width: 0.15
@@ -313,7 +313,7 @@ Transform:
   m_GameObject: {fileID: 3870535617272265793}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0, z: 0}
+  m_LocalPosition: {x: 0.25, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -408,7 +408,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.19, y: 0.63}
+  m_Size: {x: 0.59375, y: 1.96875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GroundChecker
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 64
   _point: {fileID: 5244428564179657784}
   _size: {x: 0.48, y: 0.1}
   _color: {r: 1, g: 0, b: 0, a: 1}
@@ -633,7 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WallChecker
   _rightPoint: {fileID: 722866689299539105}
   _leftPoint: {fileID: 6413977087221165504}
-  _size: {x: 0.1, y: 1}
+  _size: {x: 0.1, y: 0.15}
   _color: {r: 0, g: 1, b: 0.1826632, a: 1}
 --- !u!96 &604482123785807279
 TrailRenderer:
@@ -5555,8 +5555,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1806845377
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_RenderMode: 0

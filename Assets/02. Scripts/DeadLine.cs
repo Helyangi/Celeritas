@@ -6,6 +6,7 @@ public class DeadLine : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            SoundManager.Instance.PlaySFX(SFXType.Death, transform.position);
             PlayerController controller = other.gameObject.GetComponent<PlayerController>();
             if (controller == null) return;
             controller.Respawn();

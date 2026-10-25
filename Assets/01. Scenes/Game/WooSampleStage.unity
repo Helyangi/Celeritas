@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 439984896}
   - component: {fileID: 439984898}
   - component: {fileID: 439984897}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: WallTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2501,11 +2501,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3068467456999192361, guid: 831a6c823cd744bf489daaec6103b496, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 79.05078
+      value: 36.10079
       objectReference: {fileID: 0}
     - target: {fileID: 3068467456999192361, guid: 831a6c823cd744bf489daaec6103b496, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.0607395
+      value: 7.4607396
       objectReference: {fileID: 0}
     - target: {fileID: 3906258925660788419, guid: 831a6c823cd744bf489daaec6103b496, type: 3}
       propertyPath: Target.TrackingTarget
@@ -5414,6 +5414,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd00617569a6b45d999d43f26271b3ff, type: 3}
+--- !u!1001 &1575497946
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 390139036403233154, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_Name
+      value: '@GameManager'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 82.03741
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 32.4311
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4362173673537366782, guid: 414a57ca636934497be098a70e2b6258, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 414a57ca636934497be098a70e2b6258, type: 3}
 --- !u!1001 &1577952115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5594,14 +5651,6 @@ PrefabInstance:
     - target: {fileID: 3562771832658215335, guid: 2634eba39ff6f49dda5b20d804717cee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5474878763189859039, guid: 2634eba39ff6f49dda5b20d804717cee, type: 3}
-      propertyPath: InitialModule.startSizeY.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5474878763189859039, guid: 2634eba39ff6f49dda5b20d804717cee, type: 3}
-      propertyPath: InitialModule.startSizeZ.minMaxState
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5849,7 +5898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8791599038385086407, guid: 986725e96172844f6b4c0ac36b9e0c82, type: 3}
       propertyPath: m_Name
-      value: SoundManager
+      value: '@SoundManager'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6786,3 +6835,4 @@ SceneRoots:
   - {fileID: 1469741141}
   - {fileID: 1385701015}
   - {fileID: 1132914356}
+  - {fileID: 1575497946}

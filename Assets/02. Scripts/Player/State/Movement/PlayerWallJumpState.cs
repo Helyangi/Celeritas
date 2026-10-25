@@ -9,6 +9,10 @@ public class PlayerWallJumpState : PlayerBaseMovementState
 
     public override void EnterState()
     {
+        float awayDir = controller.WallChecker.GetWallDirection();
+        controller.Renderer.transform.rotation = awayDir == 1 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
+        
+        controller.CanJump = false;
         _wallJumpCoroutine = controller.StartCoroutine(WallJumpCoroutine());
     }
 
