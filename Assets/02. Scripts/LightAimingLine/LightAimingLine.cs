@@ -70,7 +70,7 @@ public class LightAimingLine : MonoBehaviour
         _waypoints.Clear();
         _points.Add(start); // 첫 점은 내 위치
 
-        Vector2 origin = start + direction * .75f; // 이번 레이를 쏘는 시작점 !!!이거 나중에 고쳐야 함!!!
+        Vector2 origin = start;
         Vector2 dir = direction; // 이번 레이의 방향
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         float remaining = _maxDistance; // 남은 조준선 길이

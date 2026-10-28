@@ -92,7 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraZone
   camera: {fileID: 3854452906962978904}
-  manager: {fileID: 0}
 --- !u!1 &652724448520145225
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +151,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 7.5
+    OrthographicSize: 10
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

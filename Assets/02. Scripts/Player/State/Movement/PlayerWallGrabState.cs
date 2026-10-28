@@ -8,9 +8,12 @@ public class PlayerWallGrabState : PlayerBaseMovementState
     // 기본은 미끄러짐..????
     
     private float _originalGravityScale;
+    private Vector3 _originLightPos;
 
     public override void EnterState()
     {
+        _originLightPos = controller.Light.transform.localPosition;
+        controller.Light.transform.position += new Vector3(-controller.WallChecker.GetWallDirection() * 0.05f, 0, 0);
         controller.Anim.Play("WallGrab");
         controller.CanJump = true;
         SoundManager.Instance.PlaySFX(SFXType.PlayerGrabLanding, controller.transform.position);
@@ -32,5 +35,6 @@ public class PlayerWallGrabState : PlayerBaseMovementState
     public override void ExitState()
     {
         controller.RB.gravityScale = _originalGravityScale;
+        controller.Light.transform.localPosition = _originLightPos;
     }
 }
