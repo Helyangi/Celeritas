@@ -10,6 +10,7 @@ public class PlayerLightMoveState : PlayerBaseMovementState
     
     public override void EnterState()
     {
+        InputManager.Instance.IsLightEmission = false;
         _initialGravityScale = controller.RB.gravityScale;
         controller.RB.gravityScale = 0;
         controller.Anim.Play("LightMove");

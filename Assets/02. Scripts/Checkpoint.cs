@@ -37,4 +37,8 @@ public class Checkpoint : MonoBehaviour
         _isSave = false;
         _light.intensity = 0;
     }
+    private void OnDestroy()
+    {
+        _currentCheckPoint = null;
+    }
 }

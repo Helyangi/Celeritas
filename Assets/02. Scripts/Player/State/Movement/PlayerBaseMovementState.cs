@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public abstract class PlayerBaseMovementState : PlayerBaseState
 {
     public PlayerBaseMovementState(PlayerController controller) : base(controller) {}
@@ -50,6 +49,7 @@ public abstract class PlayerBaseMovementState : PlayerBaseState
     }
     protected void Jump(Vector2 jumpDirection) // 점프 함수
     {
+        InputManager.Instance.IsJump = false; // 입력 취소
         controller.Anim.Play("Jump");
         SoundManager.Instance.PlaySFX(SFXType.PlayerJump, controller.transform.position);
         controller.RB.linearVelocityY = 0;

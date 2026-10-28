@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.LowLevelPhysics2D;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public GroundChecker GroundChecker;     // GroundChecker 연결
     public WallChecker WallChecker;         // WallChecker 연결
     public LightAimingLine LightAimingLine; // LightAimingLine과 연결
+    public Light2D Light; // 광원
     
     // 현재 상태 담당
     private PlayerBaseMovementState _currentMovementState; // 현재 움직임 상태 담당
@@ -128,9 +130,10 @@ public class PlayerController : MonoBehaviour
         RB.simulated = false;
         
         ChangeMovementState(IdleState);
-        ChangeActionState(AimingState);
+        ChangeActionState(NoneState);
         
         yield return new WaitForSeconds(Stats.RespawnTime);
+        ChangeActionState(AimingState);
         SoundManager.Instance.PlaySFX(SFXType.Respawn, transform.position);
         
         LightAimingLine.LightPath.Clear();

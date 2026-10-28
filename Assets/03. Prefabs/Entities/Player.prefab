@@ -584,6 +584,7 @@ MonoBehaviour:
   GroundChecker: {fileID: 1260692395035282599}
   WallChecker: {fileID: 8056227787651364586}
   LightAimingLine: {fileID: 2920367240162233314}
+  Light: {fileID: 5200643521936826626}
   CanJump: 1
 --- !u!114 &-7191142349213766866
 MonoBehaviour:

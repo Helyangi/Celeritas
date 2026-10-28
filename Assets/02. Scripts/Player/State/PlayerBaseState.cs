@@ -19,22 +19,19 @@ public abstract class PlayerBaseState
     // TODO: MVP 이후 InputManager(싱글톤) 도입 시 이 부분만 교체하면 됨 (예: return InputManager.Instance.MoveInput;)
     protected bool GetMouseInput()
     {
-        return Input.GetMouseButtonDown(0);
+        return InputManager.Instance.IsLightEmission;
     }
-    
     protected Vector2 GetMousePos()
     {
-        Vector2 mouseScreenPos = Input.mousePosition;
-        return Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        return InputManager.Instance.AimingPos;
     }
-    
     protected float GetMoveInput()
     {
-        return Input.GetAxisRaw("Horizontal");
+        return InputManager.Instance.MoveDir;
     }
 
     protected bool GetJumpInput()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return InputManager.Instance.IsJump;
     }
 }

@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-            Application.targetFrameRate = 120; // 목표 프레임 설정
+        Application.targetFrameRate = 120; // 목표 프레임 설정
+    }
+    private void GameStart()
+    {
+        
     }
 }

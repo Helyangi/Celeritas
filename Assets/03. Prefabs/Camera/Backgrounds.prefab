@@ -104,7 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5aa5b01f1dc4609b895d02957bd20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Background
-  _material: {fileID: 2100000, guid: 1be918867067440c292e91f3061deedd, type: 2}
   _speed: 0.001
 --- !u!1 &3791870431252196728
 GameObject:
@@ -210,7 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5aa5b01f1dc4609b895d02957bd20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Background
-  _material: {fileID: 2100000, guid: 17d544f44c5f84f7cb0d174ce43541ff, type: 2}
   _speed: 0.01
 --- !u!1 &5224436468569134005
 GameObject:
@@ -238,7 +236,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 149.52846, y: -0.80945, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6554045444084366623}
@@ -350,5 +348,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5aa5b01f1dc4609b895d02957bd20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Background
-  _material: {fileID: 2100000, guid: da6f54588705f4b419ce8bab5dc46efc, type: 2}
   _speed: 0.0001
