@@ -47,23 +47,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   _sfxObject: {fileID: 4213190017090142362, guid: 6ac7d6aab34824c33bacc5aeafcfc841, type: 3}
   _initialPoolSize: 10
-  _sfxMappings:
-  - SFXType: 0
-    SFXData: {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
-  - SFXType: 1
-    SFXData: {fileID: 11400000, guid: 4d3e98a8189b2473eabe4e811841cc5c, type: 2}
-  - SFXType: 2
-    SFXData: {fileID: 11400000, guid: 1e58c9287e30f4d46b4fd69dceea17a9, type: 2}
-  - SFXType: 3
-    SFXData: {fileID: 11400000, guid: 4f9fad22ffdec4fb1804cce3602bb214, type: 2}
-  - SFXType: 4
-    SFXData: {fileID: 11400000, guid: d66a1b28d04b84f8aa4943ed3a2d285a, type: 2}
-  - SFXType: 5
-    SFXData: {fileID: 11400000, guid: e152dafdf075a402dabaf26fcda2ab26, type: 2}
-  - SFXType: 6
-    SFXData: {fileID: 11400000, guid: 67e0c37e5d9d847ceaaea2117fe0136f, type: 2}
-  - SFXType: 7
-    SFXData: {fileID: 11400000, guid: efcf6da24b65642b0907c234eca513ab, type: 2}
+  _sfxList:
+  - {fileID: 11400000, guid: e152dafdf075a402dabaf26fcda2ab26, type: 2}
+  - {fileID: 11400000, guid: 67e0c37e5d9d847ceaaea2117fe0136f, type: 2}
+  - {fileID: 11400000, guid: 4d3e98a8189b2473eabe4e811841cc5c, type: 2}
+  - {fileID: 11400000, guid: f0dab8048968e4d7eae3f96e8b679e7a, type: 2}
+  - {fileID: 11400000, guid: 1e58c9287e30f4d46b4fd69dceea17a9, type: 2}
+  - {fileID: 11400000, guid: 4f9fad22ffdec4fb1804cce3602bb214, type: 2}
+  - {fileID: 11400000, guid: d66a1b28d04b84f8aa4943ed3a2d285a, type: 2}
+  - {fileID: 11400000, guid: efcf6da24b65642b0907c234eca513ab, type: 2}
 --- !u!82 &4892510683170529812
 AudioSource:
   m_ObjectHideFlags: 0
@@ -73,7 +65,7 @@ AudioSource:
   m_GameObject: {fileID: 8791599038385086407}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7362305561166777176, guid: 5af9243aa819b4d2ab8f543b44978d9c, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 880b5d5646e884659bd0753e0a369639, type: 3}
   m_PlayOnAwake: 1
