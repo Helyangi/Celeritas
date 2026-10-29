@@ -14,6 +14,7 @@ public class SFXObject : MonoBehaviour
     {
         transform.position = pos;
         _audioSource.clip = data.Clip;
+        _audioSource.outputAudioMixerGroup = data.MixerGroup;
 
         gameObject.SetActive(true);
         _audioSource.Play();

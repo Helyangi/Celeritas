@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [Serializable]
-    public struct SFXMapping
-    {
-        public SFXType SFXType;
-        public SFXData SFXData;
-    }
-
     [Header("Pool Settings")]
     [SerializeField] private SFXObject _sfxObject;
     [SerializeField] private int _initialPoolSize = 10;
 
     [Header("SFX Mappings")]
-    [SerializeField] private List<SFXMapping> _sfxMappings;
+    [SerializeField] private List<SFXData> _sfxList;
     private Dictionary<SFXType, SFXData> _sfxDictionary = new Dictionary<SFXType, SFXData>();
 
     private Queue<SFXObject> _sfxPool = new Queue<SFXObject>();
@@ -64,11 +57,11 @@ public class SoundManager : MonoBehaviour
         _poolContainer = new GameObject("PoolContainer").transform;
         _poolContainer.SetParent(gameObject.transform);
 
-        foreach (SFXMapping mapping in _sfxMappings)
+        foreach (SFXData data in _sfxList)
         {
-            if (!_sfxDictionary.ContainsKey(mapping.SFXType))
+            if (!_sfxDictionary.TryAdd(data.Type, data))
             {
-                _sfxDictionary.Add(mapping.SFXType, mapping.SFXData);
+                Debug.Log($"[SoundManager] SFXType 중복: {data.Type}");
             }
         }
     }
