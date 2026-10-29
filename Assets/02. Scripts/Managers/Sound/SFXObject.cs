@@ -9,7 +9,6 @@ public class SFXObject : MonoBehaviour
     public void Init(Queue<SFXObject> pool)
     {
         poolQueue = pool;
-        ReturnToPool();
     }
     public void Play(SFXData data, Vector3 pos)
     {
@@ -20,7 +19,7 @@ public class SFXObject : MonoBehaviour
         _audioSource.Play();
         StartCoroutine(DelayReturnToPool(_audioSource.clip.length / _audioSource.pitch));
     }
-    private void ReturnToPool()
+    public void ReturnToPool()
     {
         poolQueue.Enqueue(this);
     }

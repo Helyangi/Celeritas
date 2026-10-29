@@ -77,6 +77,7 @@ public class SoundManager : MonoBehaviour
         for (int i = 0; i < _initialPoolSize; i++)
         {
             SFXObject obj = CreateNewSFXObject();
+            obj.ReturnToPool();
         }
     }
     private SFXObject CreateNewSFXObject()
