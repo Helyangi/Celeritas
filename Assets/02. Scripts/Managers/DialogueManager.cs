@@ -1,14 +1,20 @@
 using UnityEngine;
+using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] private GameObject dialoguesPanel;
+    [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private TMP_Text nameText;
+    
     private string[] _dialogues;
     private int _currentIndex;
     private bool _isTalking;
+    private string _npcName;
     
     public static DialogueManager Instance { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -30,9 +36,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(string[] dialogues)
+    public void StartDialogue(string[] dialogues, string npcName)
     {
-        if (dialogues == null || dialogues.Length == 0 || _isTalking)
+        if (dialogues == null || dialogues.Length == 0 || _isTalking || npcName == null)
         {
             return;
         }
@@ -40,10 +46,13 @@ public class DialogueManager : MonoBehaviour
         _currentIndex = 0;
         _dialogues = dialogues;
         _isTalking = true;
+        _npcName = npcName;
         
-        Debug.Log(_dialogues[_currentIndex]);
+        nameText.text = _npcName;
+        dialogueText.text = _dialogues[_currentIndex];
         
         InputManager.Instance.EnterDialogueMode();
+        dialoguesPanel.SetActive(true);
     }
 
     public void NextDialogue()
@@ -53,7 +62,7 @@ public class DialogueManager : MonoBehaviour
         if (_currentIndex < _dialogues.Length - 1)
         {
             _currentIndex++;
-            Debug.Log(_dialogues[_currentIndex]);
+            dialogueText.text = _dialogues[_currentIndex];
         }
         else
         {
@@ -64,6 +73,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         _isTalking = false;
+        dialoguesPanel.SetActive(false);
         
         InputManager.Instance.ExitDialogueMode();
     }

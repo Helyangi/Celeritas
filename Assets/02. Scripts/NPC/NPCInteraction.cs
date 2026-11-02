@@ -3,13 +3,16 @@ using UnityEngine;
 public class NPCInteraction : MonoBehaviour
 {
     [SerializeField] private string[] dialogues;
+    [SerializeField] private string name;
+    [SerializeField] private GameObject interactionPanel;
+    
     private bool _isPlayerInRange;
 
     private void Update()
     {
         if (InputManager.Instance.IsInteract && _isPlayerInRange)
         {
-            DialogueManager.Instance.StartDialogue(dialogues);
+            DialogueManager.Instance.StartDialogue(dialogues, name);
         }
     }
 
@@ -17,6 +20,7 @@ public class NPCInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactionPanel.SetActive(true);
             _isPlayerInRange = true;
         }
     }
@@ -25,6 +29,7 @@ public class NPCInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactionPanel.SetActive(false);
             _isPlayerInRange = false;
         }
     }
