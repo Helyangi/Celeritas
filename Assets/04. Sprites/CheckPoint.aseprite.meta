@@ -102,11 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-<<<<<<< Updated upstream
   platformSettingsDirtyTick: 639282094984865670
-=======
-  platformSettingsDirtyTick: 639283411057636840
->>>>>>> Stashed changes
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -133,11 +129,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Frame_0
     originalName: 
-<<<<<<< Updated upstream
     pivot: {x: -0.16666667, y: -0.107142866}
-=======
-    pivot: {x: 0.5, y: 0.46428573}
->>>>>>> Stashed changes
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -158,11 +150,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Frame_1
     originalName: 
-<<<<<<< Updated upstream
     pivot: {x: 1.1666667, y: -0.107142866}
-=======
-    pivot: {x: 0.5, y: 0.46428573}
->>>>>>> Stashed changes
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
