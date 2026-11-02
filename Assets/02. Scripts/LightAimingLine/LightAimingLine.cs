@@ -12,10 +12,9 @@ public class LightAimingLine : MonoBehaviour
     [SerializeField] private float _width = 0.2f;
     [SerializeField] private Color _heatingColor;
     [SerializeField] private Color _coolingColor;
-    private float _lightMoveCornerOffset = 0.6f; // 빛 이동 시 거울 꺾임 지점을 거울 표면에서 띄우는 거리 (플레이어 몸 크기보다 크게)
     private readonly List<Vector3> _points = new List<Vector3>(); // 조준선을 그릴 점들 (내 위치 -> 거울 꺾임 지점들 -> 끝점)
     private readonly List<Vector2> _waypoints = new List<Vector2>(); // 실제 이동에 쓸 거울 꺾임 지점들 (몸이 안 끼도록 거울에서 띄운 위치)
-    private const float ReflectOffset = .01f; // 반사 후 다시 쏠 때 거울 표면에 또 맞지 않도록 띄우는 거리
+    private const float REFLECT_OFFSET = .01f; // 반사 후 다시 쏠 때 거울 표면에 또 맞지 않도록 띄우는 거리
     [HideInInspector] public List<Vector2> LightPath = new List<Vector2>(); // 빛 이동 시 순서대로 거쳐갈 경로 (Aiming 상태가 채우고 LightMove 상태가 읽음)
 
     [Header("Glow (Bloom용 HDR 밝기)")]
@@ -100,7 +99,7 @@ public class LightAimingLine : MonoBehaviour
                 if (remaining <= 0f) break;
 
                 dir = Vector2.Reflect(dir, hit.normal); // 반사 공식: r = d - 2(d·n)n
-                origin = hit.centroid + hit.normal * ReflectOffset;
+                origin = hit.centroid + hit.normal * REFLECT_OFFSET;
                 angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             }
             else
