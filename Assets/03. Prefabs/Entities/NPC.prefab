@@ -59,7 +59,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -2108644693
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4458387165225215181
@@ -248,8 +248,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c56650eb3644919bae4c276d49ff94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCInteraction
-  dialogues: []
-  name: 
+  dialogues:
+  - "\uB300\uC0AC"
+  name: "\uD14C\uC2A4\uD2B8"
   interactionPanel: {fileID: 155651112259134709}
 --- !u!1 &6294987824399979616
 GameObject:
