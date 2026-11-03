@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab70da237387492981893278c9853e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  waitTime: 0.05
   dialoguesPanel: {fileID: 0}
   dialogueText: {fileID: 0}
   nameText: {fileID: 0}
+  controller: {fileID: 0}

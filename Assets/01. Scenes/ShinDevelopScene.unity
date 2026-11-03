@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000aba25082
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -652,6 +652,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &966450876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -9006063578903496615, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+  m_PrefabInstance: {fileID: 2145698963}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927694e8507c4417087c8e2266dfd63a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1001 &977871180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1552,6 +1563,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1139555873}
     - target: {fileID: 4331645573697227245, guid: 9959cd4e44c884a5ab25a2290890984f, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 966450876}
+    - target: {fileID: 4331645573697227245, guid: 9959cd4e44c884a5ab25a2290890984f, type: 3}
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 2010438205}
@@ -1675,7 +1690,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1372228234510551157, guid: 66697149126fb48e9944f30584169883, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.28
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 1372228234510551157, guid: 66697149126fb48e9944f30584169883, type: 3}
       propertyPath: m_LocalPosition.y
