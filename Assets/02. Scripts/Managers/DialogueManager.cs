@@ -1,16 +1,28 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] private float waitTime;
+    
+    [Header("대화창")]
     [SerializeField] private GameObject dialoguesPanel;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private TMP_Text nameText;
+    
+    [Header("플레이어 오브젝트")]
+    [SerializeField] private PlayerController controller;
     
     private string[] _dialogues;
     private int _currentIndex;
     private bool _isTalking;
     private string _npcName;
+    private bool _isTyping;
+    private Coroutine _typingCoroutine;
+    
+    public bool IsTalking => _isTalking;
     
     public static DialogueManager Instance { get; private set; }
 
@@ -48,21 +60,32 @@ public class DialogueManager : MonoBehaviour
         _isTalking = true;
         _npcName = npcName;
         
+        // 이름 & 대사 띄우기
         nameText.text = _npcName;
-        dialogueText.text = _dialogues[_currentIndex];
+        if (!_isTyping)
+            _typingCoroutine = StartCoroutine(TypeDialogue(_currentIndex));
         
         InputManager.Instance.EnterDialogueMode();
         dialoguesPanel.SetActive(true);
+        controller.LightAimingLine.SetAiming(false);
     }
 
     public void NextDialogue()
     {
         if (!_isTalking) return;
 
+        if (_isTyping)
+        {
+            StopCoroutine(_typingCoroutine);
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+            _isTyping = false;
+            return;
+        }
+
         if (_currentIndex < _dialogues.Length - 1)
         {
             _currentIndex++;
-            dialogueText.text = _dialogues[_currentIndex];
+            _typingCoroutine = StartCoroutine(TypeDialogue(_currentIndex));
         }
         else
         {
@@ -76,5 +99,21 @@ public class DialogueManager : MonoBehaviour
         dialoguesPanel.SetActive(false);
         
         InputManager.Instance.ExitDialogueMode();
+        controller.LightAimingLine.SetAiming(true);
+    }
+
+    private IEnumerator TypeDialogue(int index)
+    {
+        dialogueText.text = _dialogues[index];
+        _isTyping = true;
+
+        dialogueText.maxVisibleCharacters = 0;
+
+        for (int i = 0; i < dialogueText.text.Length; i++)
+        {
+            dialogueText.maxVisibleCharacters++;
+            yield return new WaitForSeconds(waitTime);
+        }
+        _isTyping = false;
     }
 }
