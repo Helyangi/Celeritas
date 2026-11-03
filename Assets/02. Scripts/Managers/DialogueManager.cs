@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -50,7 +51,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string[] dialogues, string npcName)
     {
-        if (dialogues == null || dialogues.Length == 0 || _isTalking || npcName == null)
+        if (dialogues == null || dialogues.Length == 0 || _isTalking || npcName == null || controller == null)
         {
             return;
         }
@@ -115,5 +116,36 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
         _isTyping = false;
+    }
+    
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        controller = player != null ? player.GetComponent<PlayerController>() : null;
+        
+        _currentIndex = 0;
+        _isTalking = false;
+        _isTyping = false;
+        
+        dialoguesPanel.SetActive(false);
+        
+        if (_typingCoroutine != null)
+        {
+            StopCoroutine(_typingCoroutine);
+            _typingCoroutine = null;
+        }
+        
+        if (InputManager.Instance != null)
+            InputManager.Instance.ExitDialogueMode();
     }
 }
