@@ -38,7 +38,7 @@ public class SaveManager : MonoBehaviour
     public void SaveProgress(string stageId, int checkpointIndex)
     {
         Progress.StageID = stageId;
-        Progress.CheckpointIndex = checkpointIndex;
+        Progress.CheckpointID = checkpointIndex;
 
         SaveSystem.Save(ProgressData.FILE_NAME, Progress);
     }
@@ -47,6 +47,7 @@ public class SaveManager : MonoBehaviour
     {
         Settings = new SettingsData();
         SaveSystem.Delete(SettingsData.FILE_NAME);
+        ApplySettings();
     }
 
     public void ResetProgress()

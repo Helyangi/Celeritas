@@ -88,6 +88,7 @@ MonoBehaviour:
   _light: {fileID: 388704303698067016}
   _burst: {fileID: 5474878763189859039}
   _burstCount: 30
+  _enableIntensity: 1
 --- !u!1 &2210434443307704675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5055,8 +5056,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0
+  m_Color: {r: 1, g: 1, b: 0.88235295, a: 1}
+  m_Intensity: 0.25
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000dbe3487437428844f12736962f9b7a6e438c05333fba4d94a3330341
