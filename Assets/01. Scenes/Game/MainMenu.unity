@@ -825,6 +825,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1355030574
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4253126808164597474, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_Name
+      value: '@SaveManager'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50.14693
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.40992
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501284920439225643, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eeaf85137b8ce42eda470a7f7cc1e7a9, type: 3}
 --- !u!1 &1409960156
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,15 +967,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1409960161}
-        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
-        m_MethodName: OnClickEvent
+        m_TargetAssemblyTypeName: NewGameButton, Assembly-CSharp
+        m_MethodName: StartNewGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stage0
+          m_StringArgument: Stage1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1409960159
@@ -1067,10 +1124,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1900649617}
-        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 5
+      - m_Target: {fileID: 1900649619}
+        m_TargetAssemblyTypeName: ContinueButton, Assembly-CSharp
+        m_MethodName: ContinueGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1261,3 +1318,4 @@ SceneRoots:
   - {fileID: 391238850}
   - {fileID: 534381581}
   - {fileID: 833437393}
+  - {fileID: 1355030574}

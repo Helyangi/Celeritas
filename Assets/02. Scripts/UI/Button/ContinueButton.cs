@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ContinueButton : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ContinueGame()
     {
-        
-    }
+        string stageId = SaveManager.Instance.Progress.StageID;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (string.IsNullOrEmpty(stageId))
+        {
+            Debug.LogWarning("[ContinueButton] 저장된 진행 상황이 없습니다.");
+            return;
+        }
+
+        SceneManager.LoadScene(stageId);
     }
 }
