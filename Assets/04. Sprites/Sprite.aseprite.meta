@@ -199,8 +199,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
+      x: 96
+      y: 32
       width: 32
       height: 32
     spriteID: 683f02edb3e1849c59882376f83b4cd6
@@ -220,7 +220,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 32
+      x: 0
       y: 0
       width: 32
       height: 32
@@ -241,7 +241,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 64
+      x: 32
       y: 0
       width: 32
       height: 32
@@ -262,11 +262,32 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 96
+      x: 64
       y: 0
       width: 32
       height: 32
     spriteID: 14e2978cb69eb43e1a18d455c6537bea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Sprite_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 0
+      width: 32
+      height: 32
+    spriteID: d1859277d746a4d6683d6ede9a35e095
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -295,7 +316,7 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 0
-        width: 126
+        width: 128
         height: 64
       spriteId: c203bd1b0c3da4a84ae2d3818bae161b
     linkedCells: []
