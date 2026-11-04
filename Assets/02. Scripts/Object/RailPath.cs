@@ -19,4 +19,13 @@ public class RailPath : MonoBehaviour
         scale.x = length; 
         transform.localScale = scale;
     }
+
+    private void OnValidate()
+    {
+        if (length <= 0) return;
+        
+        Vector3 scale = transform.localScale;
+        scale.x = length;
+        transform.localScale = scale;
+    }
 }
