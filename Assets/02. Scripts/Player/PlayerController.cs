@@ -128,11 +128,14 @@ public class PlayerController : MonoBehaviour
     {
         _isRespawning = true;
         RB.simulated = false;
-        
+
+        InputManager.Instance.DisablePlayerInput();
         ChangeMovementState(IdleState);
         ChangeActionState(NoneState);
         
         yield return new WaitForSeconds(Stats.RespawnTime);
+
+        InputManager.Instance.EnablePlayerInput();
         ChangeActionState(AimingState);
         SoundManager.Instance.PlaySFX(SFXType.Respawn, transform.position);
         
@@ -141,7 +144,7 @@ public class PlayerController : MonoBehaviour
         
         transform.position = _checkpoint;
         RB.linearVelocity = Vector2.zero;
-        
+
         RB.simulated = true;
         _isRespawning = false;
     }
