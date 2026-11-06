@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.LowLevelPhysics2D;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {   
@@ -17,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public WallChecker WallChecker;         // WallChecker 연결
     public LightAimingLine LightAimingLine; // LightAimingLine과 연결
     public Light2D Light; // 광원
+    public TrailRenderer Trail; // 잔상 연출
     
     // 현재 상태 담당
     private PlayerBaseMovementState _currentMovementState; // 현재 움직임 상태 담당
@@ -35,8 +33,9 @@ public class PlayerController : MonoBehaviour
     public PlayerAimingState AimingState; // 조준 상태
     public PlayerNoneState NoneState; // 아무것도 안하는 상태
 
-    // 이름을 못 정했는데 마땅히 적을 곳을 생각 못해서 여기 적어봄
+    // 플레이어 플래그 변수
     [HideInInspector] public bool CanJump = true;
+    public bool IsLightMoving => _currentMovementState  == LightMoveState;
 
     // 리스폰 & 체크포인트 관련 변수
     private Vector3 _checkpoint;
@@ -71,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
         // 기본 상태 설정
         ChangeMovementState(IdleState);
-        ChangeActionState(AimingState);
+        ChangeActionState(NoneState); // 평소에는 조준하지 않고, 버튼을 눌러야 조준이 시작된다
     }
 
     private void Update()
@@ -136,7 +135,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(Stats.RespawnTime);
 
         InputManager.Instance.EnablePlayerInput();
-        ChangeActionState(AimingState);
+        // 행동 상태는 위에서 이미 NoneState가 되었고, 조준은 버튼을 다시 눌러야 시작된다
         SoundManager.Instance.PlaySFX(SFXType.Respawn, transform.position);
         
         LightAimingLine.LightPath.Clear();

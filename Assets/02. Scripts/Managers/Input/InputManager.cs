@@ -10,7 +10,6 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public Vector2 AimingPos; // 조준 위치
     [HideInInspector] public float MoveDir; // 좌우 이동 방향
     [HideInInspector] public bool IsJump; // 점프 클릭 여부
-    [HideInInspector] public bool IsLightEmission; // 빛 방출 여부
     [HideInInspector] public bool IsPressedNextDialogue; // 다음 대화 입력 여부
     [HideInInspector] public bool IsInteract; // 상호작용 여부
     
@@ -55,12 +54,8 @@ public class InputManager : MonoBehaviour
         // 상호작용 입력
         IsInteract = _actionMaps.Player.Interact.WasPressedThisFrame();
     }
-    
-    private void LateUpdate()
-    {
-        IsLightEmission = false;
-    }
-    
+    public bool IsAimHeld => _actionMaps.Player.LightEmission.IsPressed();
+
     // 플레이어 인풋 활성 & 비활성
     public void EnablePlayerInput()
     {
@@ -87,7 +82,6 @@ public class InputManager : MonoBehaviour
     private void InitialSubcription()
     {
         _actionMaps.Player.Jump.performed += OnJump; // 점프 구독
-        _actionMaps.Player.LightEmission.performed += OnLightEmission; // 빛 방출 구독
     }
 
     // 대화 시작
@@ -108,11 +102,6 @@ public class InputManager : MonoBehaviour
     {
         _jumpTimer = _bufferTime;
         IsJump = true;
-    }
-    
-    private void OnLightEmission(InputAction.CallbackContext context)
-    {
-        IsLightEmission = true;
     }
     
     private void BufferTimeCheck(ref bool input, ref float timer)
