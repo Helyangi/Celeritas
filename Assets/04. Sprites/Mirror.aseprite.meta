@@ -129,28 +129,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: SideMirror
     originalName: 
-    pivot: {x: 0.45, y: 0.49999997}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 24
-      y: 0
-      width: 10
-      height: 64
-    spriteID: 1fc9ee9c341fb480db18531e19dbfe48
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 24, y: 0}
-  - name: Mirror
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.47619048, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -158,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 24
-      height: 64
-    spriteID: 085951af9fa724acc8760e14b1df1308
+      width: 21
+      height: 62
+    spriteID: 22edcf7595a804a0da87ee40b9dbf15c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,15 +151,15 @@ ScriptedImporter:
   spriteSheetImportData: []
   tileSetImportData: []
   asepriteLayers:
-  - layerIndex: 0
+  - layerIndex: 3
     uuid:
-      value0: 2953506545
+      value0: 2405137179
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Mirror
-    layerFlags: 0
+    name: Mirror_1
+    layerFlags: 3
     layerType: 1
     blendMode: 0
     cells: []
@@ -188,9 +167,9 @@ ScriptedImporter:
     tileCells: []
     tileSetIndex: 0
     parentIndex: -1
-  - layerIndex: 1
+  - layerIndex: 5
     uuid:
-      value0: 3872760758
+      value0: 1993909922
       value1: 0
       value2: 0
       value3: 0
@@ -204,40 +183,15 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 11
-        y: 0
-        width: 10
-        height: 64
-      spriteId: 1fc9ee9c341fb480db18531e19dbfe48
+        x: 6
+        y: 1
+        width: 21
+        height: 62
+      spriteId: 22edcf7595a804a0da87ee40b9dbf15c
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
-    parentIndex: 0
-  - layerIndex: 2
-    uuid:
-      value0: 3013363487
-      value1: 0
-      value2: 0
-      value3: 0
-    guid: 0
-    name: Mirror
-    layerFlags: 3
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: Mirror
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 36
-        y: 0
-        width: 24
-        height: 64
-      spriteId: 085951af9fa724acc8760e14b1df1308
-    linkedCells: []
-    tileCells: []
-    tileSetIndex: 0
-    parentIndex: 0
+    parentIndex: 3
   tileSets: []
   platformSettings:
   - name: DefaultTexturePlatform
@@ -279,5 +233,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 64, y: 64}
-  previousTextureSize: {x: 64, y: 64}
+  canvasSize: {x: 32, y: 64}
+  previousTextureSize: {x: 32, y: 64}
