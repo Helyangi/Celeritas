@@ -17,9 +17,9 @@ public abstract class PlayerBaseState
 
     // 이동 입력값을 읽어오는 함수. 각 State가 컨트롤러를 거치지 않고 이 함수를 통해 직접 입력을 받아온다.
     // TODO: MVP 이후 InputManager(싱글톤) 도입 시 이 부분만 교체하면 됨 (예: return InputManager.Instance.MoveInput;)
-    protected bool GetMouseInput()
+    protected bool GetAimHeld() // 조준 버튼을 누르고 있는 중
     {
-        return InputManager.Instance.IsLightEmission;
+        return InputManager.Instance.IsAimHeld;
     }
     protected Vector2 GetMousePos()
     {

@@ -4,13 +4,18 @@ using UnityEngine;
 public class PlayerLightMoveState : PlayerBaseMovementState
 {
     private int _pathIndex; // 지금 향하고 있는 경로 번호 (controller.LightPath의 인덱스)
+    private float _intensity = 2;
     private const float ArriveDistance = 0.01f; // 목표 지점에 이 거리 안으로 들어오면 도착한 것으로 처리
     private float _initialGravityScale;
     public PlayerLightMoveState(PlayerController controller) : base(controller) {}
     
     public override void EnterState()
     {
-        InputManager.Instance.IsLightEmission = false;
+        // Trail Renderer 켜기
+        controller.Trail.emitting = true;
+        controller.Trail.material.SetFloat(Shader.PropertyToID("_Intensity"), _intensity);
+
+        controller.Light.intensity = _intensity;
         _initialGravityScale = controller.RB.gravityScale;
         controller.RB.gravityScale = 0;
         controller.Anim.Play("LightMove");
@@ -69,9 +74,13 @@ public class PlayerLightMoveState : PlayerBaseMovementState
     
     public override void ExitState()
     {
+        // Trail Renderer 켜기
+        controller.Trail.emitting = false;
+
+        controller.Light.intensity = 1;
         controller.RB.gravityScale = _initialGravityScale;
         controller.Renderer.transform.rotation = Quaternion.identity;
-        controller.ChangeActionState(controller.AimingState);
+        controller.LightAimingLine.ClearLightSensors(); // 도착(또는 중단)하면 빛 구체의 발광을 끈다
         SoundManager.Instance.PlaySFX(SFXType.PlayerLightArrival, controller.transform.position);
         controller.RB.linearVelocityY = 0;
         controller.BoxCol.isTrigger = false;

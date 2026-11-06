@@ -585,6 +585,7 @@ MonoBehaviour:
   WallChecker: {fileID: 8056227787651364586}
   LightAimingLine: {fileID: 2920367240162233314}
   Light: {fileID: 5200643521936826626}
+  Trail: {fileID: 604482123785807279}
   CanJump: 1
 --- !u!114 &-7191142349213766866
 MonoBehaviour:
@@ -662,7 +663,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 56b56baf16c19471887e04de43ea4e6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -694,8 +695,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.008930206
-        value: 0.456522
+        time: 0.005016312
+        value: 0.25
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -716,8 +717,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.78845626, b: 0, a: 0.46666667}
-      key1: {r: 1, g: 1, b: 1, a: 0.5568628}
+      key0: {r: 1, g: 1, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -733,7 +734,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 1157
+      atime1: 65535
       atime2: 65535
       atime3: 0
       atime4: 0
@@ -743,7 +744,7 @@ TrailRenderer:
       m_Mode: 0
       m_ColorSpace: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 3
+      m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -753,7 +754,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
   m_ApplyActiveColorSpace: 1
 --- !u!1 &7709913527759683661
 GameObject:
