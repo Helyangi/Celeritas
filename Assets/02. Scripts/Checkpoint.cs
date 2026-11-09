@@ -48,7 +48,7 @@ public class Checkpoint : MonoBehaviour
     }
 
     /// <summary>
-    /// 저장된 ID의 체크포인트를 켜진 상태로 만들고 플레이어를 그 위치로 옮긴다. (소리/파티클 없이)
+    /// 저장된 ID의 체크포인트를 켜진 상태로 만들고 플레이어를 그 위치에 등장시킨다. (소리/파티클 없이)
     /// </summary>
     public static bool TryRestore(int id, PlayerController player)
     {
@@ -62,8 +62,8 @@ public class Checkpoint : MonoBehaviour
 
         Vector3 position = checkpoint.respawnPoint.position;
         player.SetCheckpoint(position);
-        player.transform.position = position;
         checkpoint.OnSave(false);
+        player.Spawn(position); // 위치 이동과 등장 연출·카메라 처리는 PlayerController가 맡는다
         return true;
     }
 

@@ -37,6 +37,11 @@ public class LightAimingLine : MonoBehaviour
     [SerializeField] private int _dustMaxPerFrame = 40;     // 한 프레임에 생성하는 최대 수 (프레임 튈 때 폭발 방지)
     private float _dustCarry; // 소수점으로 남은 생성량을 다음 프레임으로 넘겨주는 누적값
 
+    [Header("Dust (빛 이동 중 지나온 길에 떨어지는 가루)")]
+    [SerializeField] private float _moveDustPerUnit = 4f;    // 이동 거리 1당 생성 수 (속도가 달라도 간격이 같게)
+    [SerializeField] private float _moveDustSpread = 0.15f;  // 이동 경로에서 퍼지는 폭
+    private float _moveDustCarry; // 소수점으로 남은 생성량을 다음 호출로 넘겨주는 누적값
+
     // 리스트
     private HashSet<LightSensor> _previousHit = new HashSet<LightSensor>();
     private HashSet<LightSensor> _currentHit = new HashSet<LightSensor>();
@@ -285,6 +290,27 @@ public class LightAimingLine : MonoBehaviour
         {
             emitParams.position = PointOnLine(UnityEngine.Random.value * total) + (Vector3)(UnityEngine.Random.insideUnitCircle * _dustSpread);
             emitParams.velocity = new Vector3(UnityEngine.Random.Range(-_dustSideSpeed, _dustSideSpeed), 0f, 0f); // 아래로 떨어지는 건 Gravity Modifier
+            _dust.Emit(emitParams, 1);
+        }
+    }
+    // 빛 이동 중 from → to로 움직인 구간 위에 가루를 생성한다. (조준 중 가루와 같은 파티클·같은 낙하 설정을 쓴다)
+    public void EmitDustAlong(Vector2 from, Vector2 to)
+    {
+        if (_dust == null) return;
+
+        float distance = Vector2.Distance(from, to);
+        if (distance < 0.0001f) return;
+
+        _moveDustCarry += _moveDustPerUnit * distance;
+        int count = Mathf.Min((int)_moveDustCarry, _dustMaxPerFrame);
+        _moveDustCarry -= (int)_moveDustCarry;
+
+        ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
+        for (int n = 0; n < count; n++)
+        {
+            Vector2 pos = Vector2.Lerp(from, to, UnityEngine.Random.value);
+            emitParams.position = pos + UnityEngine.Random.insideUnitCircle * _moveDustSpread;
+            emitParams.velocity = new Vector3(UnityEngine.Random.Range(-_dustSideSpeed, _dustSideSpeed), 0f, 0f);
             _dust.Emit(emitParams, 1);
         }
     }
