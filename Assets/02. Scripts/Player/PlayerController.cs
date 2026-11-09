@@ -41,6 +41,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 _checkpoint;
     private bool _isRespawning;
 
+    // 등장(게임 시작/리스폰) 연출 시간. 이 시간 동안은 물리와 입력이 멈춘 채로 나타난다.
+    [SerializeField] private float _spawnDuration = 0.6f;
+    public float SpawnDuration => _spawnDuration;
+
+    // 연출/카메라 등이 구독하는 이벤트. 이 클래스는 구독자를 알지 못한다.
+    public static event System.Action<Transform, Vector3> Spawned; // (플레이어, 이동한 거리) 게임 시작·리스폰 때 위치가 정해진 직후
+    public event System.Action Died;                                // 죽는 순간
+
     private void Awake()
     {
         if (RB == null)
@@ -115,6 +123,15 @@ public class PlayerController : MonoBehaviour
         if (_isRespawning) return;
         _checkpoint = newCheckpoint;
     }
+
+    /// <summary>
+    /// 게임 시작·저장 복원 때 플레이어를 이 위치에 등장시킨다. (리스폰도 같은 경로를 쓴다)
+    /// </summary>
+    public void Spawn(Vector3 position)
+    {
+        if (_isRespawning) return;
+        StartCoroutine(SpawnRoutine(position));
+    }
     
     // 리스폰 함수
     public void Respawn()
@@ -131,18 +148,35 @@ public class PlayerController : MonoBehaviour
         InputManager.Instance.DisablePlayerInput();
         ChangeMovementState(IdleState);
         ChangeActionState(NoneState);
+        Died?.Invoke();
         
         yield return new WaitForSeconds(Stats.RespawnTime);
 
-        InputManager.Instance.EnablePlayerInput();
         // 행동 상태는 위에서 이미 NoneState가 되었고, 조준은 버튼을 다시 눌러야 시작된다
         SoundManager.Instance.PlaySFX(SFXType.Respawn, transform.position);
-        
-        LightAimingLine.LightPath.Clear();
-        CanJump = true;
-        
-        transform.position = _checkpoint;
+
+        yield return StartCoroutine(SpawnRoutine(_checkpoint));
+
+        InputManager.Instance.EnablePlayerInput();
+    }
+
+    // 위치를 정하고 등장 연출 시간만큼 기다린 뒤 조작을 풀어주는 공통 루틴 (게임 시작 / 리스폰)
+    private IEnumerator SpawnRoutine(Vector3 position)
+    {
+        _isRespawning = true;
+        RB.simulated = false;
+
+        Vector3 delta = position - transform.position;
+        transform.position = position;
         RB.linearVelocity = Vector2.zero;
+
+        if (Trail != null) Trail.Clear(); // 순간이동 때 잔상이 길게 그어지지 않도록
+        if (LightAimingLine != null && LightAimingLine.LightPath != null) LightAimingLine.LightPath.Clear();
+        CanJump = true;
+
+        Spawned?.Invoke(transform, delta);
+
+        yield return new WaitForSeconds(_spawnDuration);
 
         RB.simulated = true;
         _isRespawning = false;

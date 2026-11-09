@@ -44,6 +44,7 @@ public class PlayerLightMoveState : PlayerBaseMovementState
 
         // 현재 목표 지점을 향해 한 걸음 이동
         Vector2 target = path[_pathIndex];
+        Vector2 previous = controller.RB.position;
         Vector2 newPos = Vector2.MoveTowards
         (
             controller.RB.position,
@@ -51,6 +52,7 @@ public class PlayerLightMoveState : PlayerBaseMovementState
             controller.Stats.LightMoveSpeed * Time.fixedDeltaTime
         );
         controller.RB.MovePosition(newPos);
+        controller.LightAimingLine.EmitDustAlong(previous, newPos); // 지나온 길에 빛 가루를 남긴다
 
         // 목표 지점에 도착했으면 다음 지점으로, 마지막 지점이었다면 낙하 상태로 전환
         if (Vector2.Distance(newPos, target) <= ArriveDistance)
