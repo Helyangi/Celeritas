@@ -9,5 +9,6 @@ public enum SFXType
     PlayerWalkstep = 4,
     Checkpoint = 5,
     Death = 6,
-    Respawn = 7
+    Respawn = 7,
+    Typing = 8
 }
