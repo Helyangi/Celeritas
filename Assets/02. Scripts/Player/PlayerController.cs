@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -43,14 +44,18 @@ public class PlayerController : MonoBehaviour
 
     // 등장(게임 시작/리스폰) 연출 시간. 이 시간 동안은 물리와 입력이 멈춘 채로 나타난다.
     [SerializeField] private float _spawnDuration = 0.6f;
+    public Vector2 InitialVector;
     public float SpawnDuration => _spawnDuration;
 
     // 연출/카메라 등이 구독하는 이벤트. 이 클래스는 구독자를 알지 못한다.
     public static event System.Action<Transform, Vector3> Spawned; // (플레이어, 이동한 거리) 게임 시작·리스폰 때 위치가 정해진 직후
     public event System.Action Died;                                // 죽는 순간
+    public event System.Action SpawnFinished;                       // 등장 연출이 끝나고 조작이 가능해진 순간
 
     private void Awake()
     {
+        InitialVector = BoxCol.size;
+
         if (RB == null)
         {
             RB = GetComponent<Rigidbody2D>();
@@ -180,5 +185,6 @@ public class PlayerController : MonoBehaviour
 
         RB.simulated = true;
         _isRespawning = false;
+        SpawnFinished?.Invoke();
     }
 }
