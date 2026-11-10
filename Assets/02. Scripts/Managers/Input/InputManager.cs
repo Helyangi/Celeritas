@@ -14,6 +14,9 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public bool IsInteract; // 상호작용 여부
     
     private float _jumpTimer; // 점프 타이머
+
+    // 컷씬처럼 스크립트가 대신 넣는 이동 입력 (null이면 키보드 입력을 그대로 쓴다)
+    private float? _scriptedMoveDir;
     
     private InputSystem_Actions _actionMaps;
     
@@ -45,8 +48,8 @@ public class InputManager : MonoBehaviour
         Vector2 mousePos = _actionMaps.Player.AimingPos.ReadValue<Vector2>();
         AimingPos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        // 좌우 이동 입력
-        MoveDir = _actionMaps.Player.Move.ReadValue<Vector2>().x;
+        // 좌우 이동 입력 (스크립트가 넣은 입력이 있으면 그걸 우선한다)
+        MoveDir = _scriptedMoveDir ?? _actionMaps.Player.Move.ReadValue<Vector2>().x;
         
         // 다음 대화 입력
         IsPressedNextDialogue = _actionMaps.Dialogue.Next.WasPressedThisFrame();
@@ -76,6 +79,26 @@ public class InputManager : MonoBehaviour
     public void DisableDialogueInput()
     {
         _actionMaps.Dialogue.Disable();
+    }
+
+    // 스크립트 입력 (컷씬에서 플레이어가 스스로 움직일 때 사용)
+    // 키보드 입력이 꺼져 있어도 동작한다. 다 쓰면 ClearScriptedInput으로 꼭 비워야 한다.
+    public void SetScriptedMove(float direction)
+    {
+        _scriptedMoveDir = Mathf.Clamp(direction, -1f, 1f);
+        MoveDir = _scriptedMoveDir.Value; // 이번 프레임부터 바로 반영
+    }
+
+    public void ScriptedJump()
+    {
+        _jumpTimer = _bufferTime;
+        IsJump = true;
+    }
+
+    public void ClearScriptedInput()
+    {
+        _scriptedMoveDir = null;
+        MoveDir = 0f;
     }
     
     // 구독

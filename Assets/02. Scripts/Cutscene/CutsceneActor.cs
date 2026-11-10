@@ -4,21 +4,31 @@ using UnityEngine;
 /// <summary>
 /// 씬 안의 오브젝트에 컷씬용 이름표(Id)를 붙인다.
 /// 컷씬 에셋(CutsceneData)은 씬 오브젝트를 직접 참조할 수 없어서, 단계들은 이 Id로 오브젝트를 찾는다.
-/// 예: NPC에 "No5", 컷씬 카메라에 "No5Cam"
+/// 예: NPC에 "No5", 컷씬 카메라에 "No5Cam", 위치 표시용 빈 오브젝트에 "P_Door"
+/// 플레이어는 이름표 없이 Id "Player"로 찾을 수 있다.
 /// </summary>
 public class CutsceneActor : MonoBehaviour
 {
     private static readonly Dictionary<string, CutsceneActor> _registry = new Dictionary<string, CutsceneActor>();
 
     [SerializeField] private string _id;
+    [Tooltip("이미지가 기본으로 왼쪽을 보고 있으면 체크 (바라보기 방향이 반대로 되지 않도록)")]
+    [SerializeField] private bool _spriteFacesLeft;
 
     public string Id => _id;
+    public bool SpriteFacesLeft => _spriteFacesLeft;
 
     private void Awake()
     {
         if (string.IsNullOrEmpty(_id))
         {
             Debug.LogWarning($"[CutsceneActor] Id가 비어 있습니다: {name}", this);
+            return;
+        }
+
+        if (_id == CutsceneTargets.PlayerId)
+        {
+            Debug.LogWarning($"[CutsceneActor] '{CutsceneTargets.PlayerId}'는 플레이어 전용 Id라 쓸 수 없습니다: {name}", this);
             return;
         }
 
