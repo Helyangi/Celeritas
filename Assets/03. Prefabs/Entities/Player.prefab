@@ -274,13 +274,15 @@ MonoBehaviour:
   _lightPos: {fileID: 2714613113821141917}
   ContactLayer:
     serializedVersion: 2
-    m_Bits: 704
+    m_Bits: 960
   _maxReflection: 10
   _maxDistance: 100
   _width: 0.15
   _heatingColor: {r: 1, g: 1, b: 0, a: 0.78431374}
   _coolingColor: {r: 1, g: 1, b: 0, a: 0.19607843}
   LightPath: []
+  _glassIndex: 1.5
+  _maxInternalBounce: 8
   _coolingIntensity: 1
   _heatingIntensity: 1.5
   _dust: {fileID: 5819770550707606022}
@@ -288,6 +290,8 @@ MonoBehaviour:
   _dustSpread: 0.12
   _dustSideSpeed: 0.25
   _dustMaxPerFrame: 40
+  _moveDustPerUnit: 4
+  _moveDustSpread: 0.15
 --- !u!1 &3870535617272265793
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +468,7 @@ GameObject:
   - component: {fileID: 1260692395035282599}
   - component: {fileID: 8056227787651364586}
   - component: {fileID: 604482123785807279}
+  - component: {fileID: 747914932218838232}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -587,6 +592,8 @@ MonoBehaviour:
   Light: {fileID: 5200643521936826626}
   Trail: {fileID: 604482123785807279}
   CanJump: 1
+  _spawnDuration: 0.6
+  InitialVector: {x: 0, y: 0}
 --- !u!114 &-7191142349213766866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +763,18 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &747914932218838232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618313748160664770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b308f669436fc42f7b2bf5c9a2275239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLifeEffect
 --- !u!1 &7709913527759683661
 GameObject:
   m_ObjectHideFlags: 0

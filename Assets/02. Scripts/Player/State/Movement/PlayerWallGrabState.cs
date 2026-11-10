@@ -12,6 +12,10 @@ public class PlayerWallGrabState : PlayerBaseMovementState
 
     public override void EnterState()
     {
+        // 콜라이더
+        controller.BoxCol.offset = new Vector2(0, -0.1f);
+        controller.BoxCol.size = new Vector2(0.5f, 1.8f);
+
         _originLightPos = controller.Light.transform.localPosition;
         controller.Light.transform.position += new Vector3(-controller.WallChecker.GetWallDirection() * 0.05f, 0, 0);
         controller.Anim.Play("WallGrab");
@@ -34,6 +38,10 @@ public class PlayerWallGrabState : PlayerBaseMovementState
 
     public override void ExitState()
     {
+        // 콜라이더
+        controller.BoxCol.offset = new Vector2(0, 0);
+        controller.BoxCol.size = controller.InitialVector;
+
         controller.RB.gravityScale = _originalGravityScale;
         controller.Light.transform.localPosition = _originLightPos;
     }
