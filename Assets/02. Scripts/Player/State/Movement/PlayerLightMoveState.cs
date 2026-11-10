@@ -8,9 +8,12 @@ public class PlayerLightMoveState : PlayerBaseMovementState
     private const float ArriveDistance = 0.01f; // 목표 지점에 이 거리 안으로 들어오면 도착한 것으로 처리
     private float _initialGravityScale;
     public PlayerLightMoveState(PlayerController controller) : base(controller) {}
+    private Vector2 _boxVector = new Vector2(0.5f, 0.5f);
+    private Vector2 _boxOffset = new Vector2(0.6f, 0);
     
     public override void EnterState()
     {
+
         // Trail Renderer 켜기
         controller.Trail.emitting = true;
         controller.Trail.material.SetFloat(Shader.PropertyToID("_Intensity"), _intensity);
@@ -22,7 +25,12 @@ public class PlayerLightMoveState : PlayerBaseMovementState
         controller.ChangeActionState(controller.NoneState);
         SoundManager.Instance.PlaySFX(SFXType.PlayerLightShot, controller.transform.position);
         _pathIndex = 0; // 항상 경로의 첫 지점부터 시작
+        
+        // 콜라이더 바꾸기
         controller.BoxCol.isTrigger = true;
+        controller.BoxCol.size = _boxVector;
+        controller.BoxCol.offset = _boxOffset;
+
         LightRotate(controller.LightAimingLine.LightPath[_pathIndex]);
     }
     
@@ -85,7 +93,12 @@ public class PlayerLightMoveState : PlayerBaseMovementState
         controller.LightAimingLine.ClearLightSensors(); // 도착(또는 중단)하면 빛 구체의 발광을 끈다
         SoundManager.Instance.PlaySFX(SFXType.PlayerLightArrival, controller.transform.position);
         controller.RB.linearVelocityY = 0;
+
+        // 박스 콜라이더
         controller.BoxCol.isTrigger = false;
+        controller.BoxCol.size = controller.InitialVector;
+        controller.BoxCol.offset = Vector2.zero;
+
         controller.CanJump = true;
     }
 }
