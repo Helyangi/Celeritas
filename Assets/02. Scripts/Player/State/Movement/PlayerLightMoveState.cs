@@ -46,7 +46,7 @@ public class PlayerLightMoveState : PlayerBaseMovementState
         // 경로가 비었거나 이미 다 지나왔으면 낙하 상태로 전환
         if (_pathIndex >= path.Count)
         {
-            controller.ChangeMovementState(controller.FallState);
+            FinishMove();
             return;
         }
 
@@ -68,12 +68,19 @@ public class PlayerLightMoveState : PlayerBaseMovementState
             _pathIndex++;
             if (_pathIndex >= path.Count)
             {
-                controller.ChangeMovementState(controller.FallState);
+                FinishMove();
                 return;
             }
 
             LightRotate(path[_pathIndex]);
         }
+    }
+    // 마지막 지점(빛 오브)에 도달했을 때: 오브에 도착을 알리고(파티클 + 쿨타임) 낙하 상태로 넘어간다
+    private void FinishMove()
+    {
+        LightOrb orb = controller.LightAimingLine.TargetOrb;
+        if (orb != null) orb.OnArrived();
+        controller.ChangeMovementState(controller.FallState);
     }
     private void LightRotate(Vector2 target)
     {
