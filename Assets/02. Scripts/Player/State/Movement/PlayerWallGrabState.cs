@@ -28,7 +28,7 @@ public class PlayerWallGrabState : PlayerBaseMovementState
 
     public override void UpdateState()
     {
-        ChangeWallJumpState();
+        if (ChangeWallJumpState()) return;
         
         if (controller.WallChecker.GetWallDirection() * GetMoveInput() <= 0)
         {

@@ -15,8 +15,8 @@ public class PlayerIdleState : PlayerBaseMovementState
     public override void UpdateState()
     {
         // 상태 변경 조건 체크
-        ChangeJumpState();
-        ChangeFallState();
+        if (ChangeJumpState()) return;
+        if (ChangeFallState()) return;
 
         // 이 State가 직접 입력을 받아서 전환 여부를 판단한다
         float moveInput = GetMoveInput();

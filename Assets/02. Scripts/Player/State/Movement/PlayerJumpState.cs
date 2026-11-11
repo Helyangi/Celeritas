@@ -14,8 +14,8 @@ public class PlayerJumpState : PlayerBaseMovementState
     public override void UpdateState()
     {
         // 상태 변경 조건 체크
-        ChangeFallState();
-        ChangeWallGrabState();
+        if (ChangeFallState()) return;
+        if (ChangeWallGrabState()) return;
         
         _jumpMoveInput = GetMoveInput();
     }

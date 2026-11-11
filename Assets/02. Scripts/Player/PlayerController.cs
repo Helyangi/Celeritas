@@ -35,8 +35,20 @@ public class PlayerController : MonoBehaviour
     public PlayerNoneState NoneState; // 아무것도 안하는 상태
 
     // 플레이어 플래그 변수
-    [HideInInspector] public bool CanJump = true;
+    private bool _canJump = true;
+    public bool CanJump // 값이 실제로 바뀔 때만 JumpAvailabilityChanged가 발생한다
+    {
+        get => _canJump;
+        set
+        {
+            if (_canJump == value) return;
+            _canJump = value;
+            JumpAvailabilityChanged?.Invoke(value);
+        }
+    }
     public bool IsLightMoving => _currentMovementState  == LightMoveState;
+    public bool IsFalling => _currentMovementState == FallState;
+    public PlayerBaseMovementState PreviousMovementState { get; private set; } // 직전 움직임 상태 (상태 진입 시점에 "어디서 왔는지" 알 수 있다)
 
     // 리스폰 & 체크포인트 관련 변수
     private Vector3 _checkpoint;
@@ -46,11 +58,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _spawnDuration = 0.6f;
     public Vector2 InitialVector;
     public float SpawnDuration => _spawnDuration;
+    public bool IsRespawning => _isRespawning;
 
     // 연출/카메라 등이 구독하는 이벤트. 이 클래스는 구독자를 알지 못한다.
     public static event System.Action<Transform, Vector3> Spawned; // (플레이어, 이동한 거리) 게임 시작·리스폰 때 위치가 정해진 직후
     public event System.Action Died;                                // 죽는 순간
     public event System.Action SpawnFinished;                       // 등장 연출이 끝나고 조작이 가능해진 순간
+    public event System.Action MovementStateChanged;                // 움직임 상태가 바뀐 직후
+    public event System.Action<bool> JumpAvailabilityChanged;       // 점프 가능 여부가 바뀐 순간 (true: 점프 기회 획득, false: 소모)
 
     private void Awake()
     {
@@ -110,8 +125,10 @@ public class PlayerController : MonoBehaviour
     public void ChangeMovementState(PlayerBaseMovementState newState)
     {
         _currentMovementState?.ExitState();
+        PreviousMovementState = _currentMovementState;
         _currentMovementState = newState;
         _currentMovementState.EnterState();
+        MovementStateChanged?.Invoke();
     }
 
     // 현재 행동 상태 변경 함수

@@ -14,8 +14,8 @@ public class PlayerFallState : PlayerBaseMovementState
     public override void UpdateState()
     {
         // 상태 변경 조건 체크
-        ChangeJumpState();
-        ChangeWallGrabState();
+        if (ChangeJumpState()) return;
+        if (ChangeWallGrabState()) return;
 
         if (controller.GroundChecker.IsGround())
         {
