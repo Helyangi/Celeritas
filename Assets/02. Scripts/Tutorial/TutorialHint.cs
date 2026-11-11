@@ -47,6 +47,7 @@ public class TutorialHint : MonoBehaviour
     {
         int token = ++_token;
         Prepare(text);
+        if (_visible.Count > 0) PlaySound(SFXType.TutorialShow); // 문구마다 시작할 때 한 번
         yield return Animate(_showStagger, _showCharTime, true, token);
         if (token == _token && _visible.Count > 0) StartCoroutine(IdleRoutine(token)); // 다 나타나면 살짝 움직이며 빛 가루를 흘린다
     }
@@ -242,6 +243,11 @@ public class TutorialHint : MonoBehaviour
             emitParams.velocity = new Vector3(Random.Range(-0.2f, 0.2f), 0f, 0f); // 아래로 떨어지는 건 Gravity Modifier
             _dust.Emit(emitParams, 1);
         }
+    }
+
+    private void PlaySound(SFXType type)
+    {
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(type, transform.position);
     }
 
     private void OnDisable()

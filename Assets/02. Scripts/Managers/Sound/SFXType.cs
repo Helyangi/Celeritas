@@ -10,5 +10,6 @@ public enum SFXType
     Checkpoint = 5,
     Death = 6,
     Respawn = 7,
-    Typing = 8
+    Typing = 8,
+    TutorialShow = 9
 }

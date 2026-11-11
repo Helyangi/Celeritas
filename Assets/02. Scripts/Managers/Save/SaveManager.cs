@@ -51,6 +51,15 @@ public class SaveManager : MonoBehaviour
         ApplySettings();
     }
 
+    // 저장된 진행이 있는지 확인한다. 새 게임 경고를 띄울지 판단할 때 쓴다
+    // 체크포인트에 도달했으면 진행이 있는 것이고, Stage1에서 체크포인트가 -1이면(튜토리얼만 한 경우 포함) 진행이 없는 것으로 본다
+    public bool HasProgress()
+    {
+        if (Progress == null) return false;
+        if (Progress.CheckpointID >= 0) return true;
+        return !string.IsNullOrEmpty(Progress.StageID) && Progress.StageID != "Stage1";
+    }
+
     public bool IsTutorialCompleted(string id)
     {
         return Progress.CompletedTutorials != null && Progress.CompletedTutorials.Contains(id);
