@@ -241,8 +241,8 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
+      x: 128
+      y: 32
       width: 32
       height: 32
     spriteID: 74dd24723406944aeac29e1eee43056d
@@ -262,11 +262,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 32
+      x: 0
       y: 0
       width: 32
       height: 32
-    spriteID: 14e2978cb69eb43e1a18d455c6537bea
+    spriteID: 3c27d7cc7eec24afd9eb50184d56e2db
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -283,11 +283,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 64
+      x: 32
       y: 0
       width: 32
       height: 32
-    spriteID: d1859277d746a4d6683d6ede9a35e095
+    spriteID: ed5be342712ee4343ab244b6d24c04c5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -304,11 +304,32 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
+      x: 64
+      y: 0
+      width: 32
+      height: 32
+    spriteID: 17e70f52c9ee24ba890b634927d74d29
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Sprite_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
       x: 96
       y: 0
       width: 32
       height: 32
-    spriteID: d948997a4c011414baaa4bd59801a846
+    spriteID: b9e463bfdfb4340efa450cd990c68af6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -337,7 +358,7 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 0
-        width: 128
+        width: 160
         height: 64
       spriteId: c203bd1b0c3da4a84ae2d3818bae161b
     linkedCells: []
@@ -385,5 +406,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 128, y: 64}
-  previousTextureSize: {x: 128, y: 64}
+  canvasSize: {x: 160, y: 64}
+  previousTextureSize: {x: 256, y: 64}
