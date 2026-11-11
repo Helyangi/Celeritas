@@ -48,6 +48,12 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsLightMoving => _currentMovementState  == LightMoveState;
     public bool IsFalling => _currentMovementState == FallState;
+    public bool IsMoving => _currentMovementState == MoveState;
+    public bool IsWallGrabbing => _currentMovementState == WallGrabState;
+    public bool IsWallJumping => _currentMovementState == WallJumpState;
+    public bool IsJumping => _currentMovementState == JumpState || _currentMovementState == WallJumpState;
+    public bool IsAiming => _currentActionState == AimingState;
+    public bool IsAimingAtOrb { get; private set; } // 지금 조준선이 빛 오브에 닿아 있는가 (조준 상태가 매 프레임 갱신)
     public PlayerBaseMovementState PreviousMovementState { get; private set; } // 직전 움직임 상태 (상태 진입 시점에 "어디서 왔는지" 알 수 있다)
 
     // 리스폰 & 체크포인트 관련 변수
@@ -64,6 +70,8 @@ public class PlayerController : MonoBehaviour
     public static event System.Action<Transform, Vector3> Spawned; // (플레이어, 이동한 거리) 게임 시작·리스폰 때 위치가 정해진 직후
     public event System.Action Died;                                // 죽는 순간
     public event System.Action SpawnFinished;                       // 등장 연출이 끝나고 조작이 가능해진 순간
+    public event System.Action ActionStateChanged;                  // 행동 상태(조준 등)가 바뀐 직후
+    public event System.Action<bool> AimingAtOrbChanged;            // 조준선이 빛 오브에 닿기 시작/떨어진 순간
     public event System.Action MovementStateChanged;                // 움직임 상태가 바뀐 직후
     public event System.Action<bool> JumpAvailabilityChanged;       // 점프 가능 여부가 바뀐 순간 (true: 점프 기회 획득, false: 소모)
 
@@ -137,6 +145,15 @@ public class PlayerController : MonoBehaviour
         _currentActionState?.ExitState();
         _currentActionState = newState;
         _currentActionState.EnterState();
+        ActionStateChanged?.Invoke();
+    }
+
+    // 조준선이 빛 오브에 닿아 있는지 알려주는 함수 (조준 상태가 호출). 값이 바뀔 때만 이벤트가 발생한다
+    public void SetAimingAtOrb(bool value)
+    {
+        if (IsAimingAtOrb == value) return;
+        IsAimingAtOrb = value;
+        AimingAtOrbChanged?.Invoke(value);
     }
 
     // 체크포인트 갱신 함수

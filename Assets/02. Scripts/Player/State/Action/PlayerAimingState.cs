@@ -33,11 +33,13 @@ public class PlayerAimingState : PlayerBaseActionState
         controller.LightAimingLine.DrawAimingLine(); // 3. 계산된 점들로 랜더링
         _canLightMove = controller.LightAimingLine.HandleHitLayer(_lastHit); // 4. 마지막으로 닿은 게 뭔지 판단
         controller.LightAimingLine.SettingLightSensor();
+        controller.SetAimingAtOrb(_canLightMove); // 튜토리얼 등이 구독할 수 있게 조준선이 오브에 닿았는지 알린다
     }
     public override void ExitState()
     {
         // 발사로 끝난 경우에는 빛 이동 동안 구체의 발광을 유지하고(도착하면 LightMoveState가 끈다), 취소로 끝난 경우에는 바로 끈다.
         if (!_isFired) controller.LightAimingLine.ClearLightSensors();
+        controller.SetAimingAtOrb(false);
     }
     private void ReleaseAim()
     {

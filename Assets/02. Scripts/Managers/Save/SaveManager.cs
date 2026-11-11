@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
@@ -48,6 +49,20 @@ public class SaveManager : MonoBehaviour
         Settings = new SettingsData();
         SaveSystem.Delete(SettingsData.FILE_NAME);
         ApplySettings();
+    }
+
+    public bool IsTutorialCompleted(string id)
+    {
+        return Progress.CompletedTutorials != null && Progress.CompletedTutorials.Contains(id);
+    }
+
+    public void MarkTutorialCompleted(string id)
+    {
+        if (Progress.CompletedTutorials == null) Progress.CompletedTutorials = new List<string>(); // 예전 저장 파일에는 이 필드가 없다
+        if (Progress.CompletedTutorials.Contains(id)) return;
+
+        Progress.CompletedTutorials.Add(id);
+        SaveSystem.Save(ProgressData.FILE_NAME, Progress);
     }
 
     public void ResetProgress()
