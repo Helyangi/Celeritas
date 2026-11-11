@@ -96,12 +96,9 @@ public class TutorialSequence : MonoBehaviour
             {
                 shown += Time.deltaTime; // 시간은 범위와 상관없이 흐른다
                 UpdateInside();
-                if (_inside)
-                {
-                    // 조건 판정은 범위 안에서만 한다
-                    int current = HighestMetIndex(_index);
-                    if (current > _latchedMet) _latchedMet = current;
-                }
+                // 조건 판정은 범위 안에서만 한다 (범위를 나가는 것이 조건인 경우는 예외)
+                int current = HighestMetIndex(_index, _inside);
+                if (current > _latchedMet) _latchedMet = current;
 
                 met = _latchedMet;
                 if (met >= 0 && shown >= step.MinDisplayTime)
@@ -147,17 +144,18 @@ public class TutorialSequence : MonoBehaviour
     {
         foreach (Collider2D col in _playerColliders)
         {
-            if (col != null && col.enabled && _trigger.IsTouching(col)) return true;
+            if (col != null && col.enabled && _trigger.Distance(col).isOverlapped) return true; // 접촉 정보가 아니라 도형 겹침을 직접 계산한다
         }
         return false;
     }
 
     // from 이후 단계 중 가장 뒤에서 달성된 단계 번호 (없으면 -1)
-    private int HighestMetIndex(int from)
+    private int HighestMetIndex(int from, bool inside)
     {
         for (int i = _steps.Length - 1; i >= from; i--)
         {
-            if (_steps[i].Condition != null && _steps[i].Condition.IsMet) return i;
+            TutorialCondition condition = _steps[i].Condition;
+            if (condition != null && condition.IsMet && (inside || condition.CountsOutsideZone)) return i;
         }
         return -1;
     }

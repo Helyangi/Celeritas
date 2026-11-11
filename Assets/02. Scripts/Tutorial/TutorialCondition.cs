@@ -7,6 +7,10 @@ public abstract class TutorialCondition : MonoBehaviour
     public bool IsMet { get; protected set; }
     protected PlayerController Player { get; private set; }
 
+    // 기본적으로 조건은 플레이어가 튜토리얼 범위 안에 있을 때만 판정한다.
+    // 범위를 벗어나는 것 자체가 조건인 경우처럼 범위 밖에서도 판정해야 하면 true로 바꾼다.
+    public virtual bool CountsOutsideZone => false;
+
     public void Begin(PlayerController player)
     {
         Player = player;
