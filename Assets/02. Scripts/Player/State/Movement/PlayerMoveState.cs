@@ -11,14 +11,18 @@ public class PlayerMoveState : PlayerBaseMovementState
 
     public override void EnterState()
     {
-        // Move 상태 진입 시 처리할 내용 (필요하면 이동 애니메이션 재생 등 추가)
+        controller.Anim.Play("Run");
     }
 
     public override void UpdateState()
     {
+        // 상태 변경 조건 체크
+        if (ChangeJumpState()) return;
+        if (ChangeFallState()) return;
+        if (ChangeWallGrabState()) return;
+
         // 이 State가 직접 입력을 받아서 저장 및 전환 여부를 판단한다
         _moveInput = GetMoveInput();
-        ChangeJumpState();
 
         // 이동 입력이 사라지면 Idle 상태로 전환
         if (_moveInput == 0f)
@@ -30,7 +34,7 @@ public class PlayerMoveState : PlayerBaseMovementState
     public override void FixedUpdateState()
     {
         // 입력 방향으로 실제 이동 처리
-        controller.RB.linearVelocityX = _moveInput * controller.Stats.MoveSpeed;
+        Move(_moveInput);
     }
 
     public override void ExitState()
