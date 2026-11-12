@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public abstract class PlayerBaseState
 {
@@ -8,30 +7,22 @@ public abstract class PlayerBaseState
     {
         this.controller = controller;
     }
-    
     public virtual void EnterState() {}
     public virtual void UpdateState() {}
     public virtual void FixedUpdateState() {}
-    // public virtual void OnCollisionEnter2DState(Collision2D other) {}
+        // 점프 만들면서 바닥 충돌을 관리해야 할 것 같아서 만들었음.. 구조 이상하다고 생각하면 바로 말해줘
+    public virtual void OnCollisionEnter2DState(Collision2D other) {}
     public virtual void ExitState() {}
 
     // 이동 입력값을 읽어오는 함수. 각 State가 컨트롤러를 거치지 않고 이 함수를 통해 직접 입력을 받아온다.
     // TODO: MVP 이후 InputManager(싱글톤) 도입 시 이 부분만 교체하면 됨 (예: return InputManager.Instance.MoveInput;)
-    protected bool GetAimHeld() // 조준 버튼을 누르고 있는 중
+    protected virtual float GetMoveInput()
     {
-        return InputManager.Instance.IsAimHeld;
-    }
-    protected Vector2 GetMousePos()
-    {
-        return InputManager.Instance.AimingPos;
-    }
-    protected float GetMoveInput()
-    {
-        return InputManager.Instance.MoveDir;
+        return Input.GetAxisRaw("Horizontal");
     }
 
-    protected bool GetJumpInput()
+    protected virtual bool GetJumpInput()
     {
-        return InputManager.Instance.IsJump;
+        return Input.GetKeyDown(KeyCode.Space);
     }
 }

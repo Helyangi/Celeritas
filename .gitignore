@@ -37,8 +37,6 @@
 # Visual Studio cache directory
 .vs/
 
-.idea/
-
 # Gradle cache directory
 .gradle/
 
@@ -106,9 +104,3 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
-.DS_Store
-
-# macOS system files
-.DS_Store
-.DS_Store?
-._*
