@@ -8,18 +8,13 @@ public class PlayerIdleState : PlayerBaseMovementState
     public override void EnterState()
     {
         // Idle 상태 진입 시 처리할 내용 (필요하면 정지 애니메이션 재생 등 추가)
-        controller.Anim.Play("Idle");
-        controller.RB.linearVelocityX = 0f;
     }
 
     public override void UpdateState()
     {
-        // 상태 변경 조건 체크
-        if (ChangeJumpState()) return;
-        if (ChangeFallState()) return;
-
         // 이 State가 직접 입력을 받아서 전환 여부를 판단한다
         float moveInput = GetMoveInput();
+        ChangeJumpState();
 
         // 이동 입력이 감지되면 Move 상태로 전환
         if (moveInput != 0)
