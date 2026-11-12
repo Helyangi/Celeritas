@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0851d049c1446eea0e89d825996226, type: 3}
   m_Name: RadioSFX
   m_EditorClassIdentifier: Assembly-CSharp::SFXData
-  Type: 0
+  Type: 10
   Clip: {fileID: 8300000, guid: d5cb821b197e442318a0afb072a2a3b0, type: 3}
   MixerGroup: {fileID: 4238565503558348747, guid: 5af9243aa819b4d2ab8f543b44978d9c, type: 2}

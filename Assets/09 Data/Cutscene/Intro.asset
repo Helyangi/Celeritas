@@ -71,7 +71,7 @@ MonoBehaviour:
       type: {class: SFXStep, ns: , asm: Assembly-CSharp}
       data:
         _sfx: 10
-        _positionActorId: 
+        _positionActorId: No5
     - rid: 1704300415786156322
       type: {class: DialogueStep, ns: , asm: Assembly-CSharp}
       data:
