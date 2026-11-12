@@ -11,5 +11,6 @@ public enum SFXType
     Death = 6,
     Respawn = 7,
     Typing = 8,
-    TutorialShow = 9
+    TutorialShow = 9,
+    Radio = 10
 }
