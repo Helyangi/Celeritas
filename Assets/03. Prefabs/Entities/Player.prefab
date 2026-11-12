@@ -14851,7 +14851,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 960
   _maxReflection: 10
-  _maxDistance: 100
+  _maxDistance: 35
+  _addDistance: 20
   _width: 0.15
   _heatingColor: {r: 1, g: 1, b: 0, a: 0.78431374}
   _coolingColor: {r: 1, g: 1, b: 0, a: 0.19607843}
@@ -15353,6 +15354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b308f669436fc42f7b2bf5c9a2275239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLifeEffect
+  _fadeOutDuration: 0.5
 --- !u!114 &3547131104387655174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15368,7 +15370,7 @@ MonoBehaviour:
   _fireflies: {fileID: 7758028579558999050}
   _loseBurst: {fileID: 3184872993636295476}
   _gainBurst: {fileID: 491448706517014559}
-  _strongCount: 24
+  _strongCount: 30
   _strongSpeedScale: 1.4
   _strongSizeScale: 1.3
   _weakCount: 6
