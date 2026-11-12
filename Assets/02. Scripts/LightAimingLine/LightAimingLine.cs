@@ -9,6 +9,7 @@ public class LightAimingLine : MonoBehaviour
     [SerializeField] private LayerMask ContactLayer; // 박스캐스트가 닿는 레이어 (거울, 빛 구체, 벽 등) / Glass는 체크해도 코드에서 빼고, 중심선 레이로 따로 판정한다
     [SerializeField] private int _maxReflection = 10; // 최대 반사 횟수 (유리는 들어갔다 나오는 것까지 1회로 센다)
     [SerializeField] private float _maxDistance = 40; // 조준선 최대 길이 (반사된 구간까지 합친 전체 길이)
+    [SerializeField] private float _addDistance = 20; // 조준선 최대 길이 (반사된 구간까지 합친 전체 길이)
     [SerializeField] private float _width = 0.2f;
     [SerializeField] private Color _heatingColor;
     [SerializeField] private Color _coolingColor;
@@ -120,6 +121,7 @@ public class LightAimingLine : MonoBehaviour
                 // 거울이면: 이동용 꺾임 지점 저장 → 남은 거리 갱신 → 반사 방향 계산 → 다음 레이 준비
                 _waypoints.Add(hit.centroid);
 
+                remaining += _addDistance;
                 remaining -= hit.distance;
                 if (remaining <= 0f) break;
 
@@ -159,6 +161,7 @@ public class LightAimingLine : MonoBehaviour
 
         _waypoints.Add(hit.point); // 이동용 꺾임 지점: 진입점
 
+        remaining += _addDistance;
         remaining -= hit.distance;
         if (remaining <= 0f) return false;
 
