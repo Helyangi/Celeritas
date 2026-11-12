@@ -25,6 +25,7 @@ MonoBehaviour:
   - rid: 1704300415786156281
   - rid: 1704300415786156282
   - rid: 1704300415786156283
+  - rid: 1704300471679451304
   references:
     version: 2
     RefIds:
@@ -101,3 +102,9 @@ MonoBehaviour:
       type: {class: WaitStep, ns: , asm: Assembly-CSharp}
       data:
         _seconds: 1
+    - rid: 1704300471679451304
+      type: {class: FadeStep, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _duration: 1
+        _color: {r: 0, g: 0, b: 0, a: 1}

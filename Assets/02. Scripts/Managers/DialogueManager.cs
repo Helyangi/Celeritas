@@ -195,6 +195,7 @@ public class DialogueManager : MonoBehaviour
         for (int i = 0; i < dialogueText.text.Length; i++)
         {
             dialogueText.maxVisibleCharacters++;
+            SoundManager.Instance.PlaySFX(SFXType.Typing, transform.position);
             yield return new WaitForSeconds(waitTime);
         }
         _isTyping = false;
