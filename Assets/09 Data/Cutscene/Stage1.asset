@@ -25,6 +25,9 @@ MonoBehaviour:
   - rid: 1704300471679451246
   - rid: 1704300471679451253
   - rid: 1704300471679451142
+  - rid: 1704300471679451266
+  - rid: 1704300471679451273
+  - rid: 1704300471679451311
   references:
     version: 2
     RefIds:
@@ -92,3 +95,19 @@ MonoBehaviour:
       type: {class: WaitStep, ns: , asm: Assembly-CSharp}
       data:
         _seconds: 1
+    - rid: 1704300471679451266
+      type: {class: FadeStep, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _duration: 1
+        _color: {r: 0, g: 0, b: 0, a: 1}
+    - rid: 1704300471679451273
+      type: {class: LoadSceneStep, ns: , asm: Assembly-CSharp}
+      data:
+        _sceneName: Stage2
+    - rid: 1704300471679451311
+      type: {class: FadeStep, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _duration: 1
+        _color: {r: 0, g: 0, b: 0, a: 1}
