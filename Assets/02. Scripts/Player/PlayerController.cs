@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public WallChecker WallChecker;         // WallChecker 연결
     public LightAimingLine LightAimingLine; // LightAimingLine과 연결
     public Light2D Light; // 광원
-    public TrailRenderer Trail; // 잔상 연출
     
     // 현재 상태 담당
     private PlayerBaseMovementState _currentMovementState; // 현재 움직임 상태 담당
@@ -74,6 +73,12 @@ public class PlayerController : MonoBehaviour
     public event System.Action<bool> AimingAtOrbChanged;            // 조준선이 빛 오브에 닿기 시작/떨어진 순간
     public event System.Action MovementStateChanged;                // 움직임 상태가 바뀐 직후
     public event System.Action<bool> JumpAvailabilityChanged;       // 점프 가능 여부가 바뀐 순간 (true: 점프 기회 획득, false: 소모)
+    public event System.Action<Vector2, Vector2> LightShot;         // 빛 이동을 시작한 순간 (발사 위치, 진행 방향)
+    public event System.Action<Vector2, Vector2> LightReflected;    // 거울에서 꺾인 순간 (꺾인 위치, 꺾인 뒤 진행 방향)
+
+    // 빛 이동 상태가 부르는 알림들 (연출 컴포넌트가 구독한다)
+    public void RaiseLightShot(Vector2 position, Vector2 direction) => LightShot?.Invoke(position, direction);
+    public void RaiseLightReflected(Vector2 position, Vector2 direction) => LightReflected?.Invoke(position, direction);
 
     private void Awake()
     {
@@ -209,7 +214,6 @@ public class PlayerController : MonoBehaviour
         transform.position = position;
         RB.linearVelocity = Vector2.zero;
 
-        if (Trail != null) Trail.Clear(); // 순간이동 때 잔상이 길게 그어지지 않도록
         if (LightAimingLine != null && LightAimingLine.LightPath != null) LightAimingLine.LightPath.Clear();
         CanJump = true;
 

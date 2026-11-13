@@ -59787,6 +59787,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7191142349213766866, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: LightArriveHitstop
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 491448706517014559, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 491448706517014559, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721257195856854584, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721257195856854584, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721257195856854584, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721257195856854584, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721257195856854584, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3184872993636295476, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3184872993636295476, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4200458519128855453, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -59827,9 +59867,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6108928929356230183, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108928929356230183, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108928929356230183, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108928929356230183, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108928929356230183, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7618313748160664770, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758028579558999050, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758028579558999050, guid: b05dfc38ba36f45ac96b9b1bcc7dfe5b, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
