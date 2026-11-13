@@ -10,10 +10,12 @@ public class SFXObject : MonoBehaviour
     {
         poolQueue = pool;
     }
-    public void Play(SFXData data, Vector3 pos)
+    public void Play(SFXData data, Vector3 pos, float pitch = 1f)
     {
         transform.position = pos;
         _audioSource.clip = data.Clip;
+        _audioSource.volume = data.Volume;
+        _audioSource.pitch = pitch;
         _audioSource.outputAudioMixerGroup = data.MixerGroup;
 
         gameObject.SetActive(true);

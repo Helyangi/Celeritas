@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SFXData
   Type: 8
   Clip: {fileID: 8300000, guid: 8fa0f642ea7db4210b2a36214f7c0f43, type: 3}
+  Volume: 0.5
   MixerGroup: {fileID: 4238565503558348747, guid: 5af9243aa819b4d2ab8f543b44978d9c, type: 2}

@@ -5,11 +5,11 @@ public class PlayerLightMoveState : PlayerBaseMovementState
 {
     private int _pathIndex; // 지금 향하고 있는 경로 번호 (controller.LightPath의 인덱스)
     private float _intensity = 2;
+    private const float ReflectPitchStep = 2f; // 반사 1회마다 올릴 반음 수
     private const float ArriveDistance = 0.01f; // 목표 지점에 이 거리 안으로 들어오면 도착한 것으로 처리
     private float _initialGravityScale;
     public PlayerLightMoveState(PlayerController controller) : base(controller) {}
     private Vector2 _boxVector = new Vector2(0.5f, 0.5f);
-    private Vector2 _boxOffset = new Vector2(0.6f, 0);
     
     public override void EnterState()
     {
@@ -29,7 +29,6 @@ public class PlayerLightMoveState : PlayerBaseMovementState
         // 콜라이더 바꾸기
         controller.BoxCol.isTrigger = true;
         controller.BoxCol.size = _boxVector;
-        controller.BoxCol.offset = _boxOffset;
 
         LightRotate(controller.LightAimingLine.LightPath[_pathIndex]);
     }
@@ -72,6 +71,8 @@ public class PlayerLightMoveState : PlayerBaseMovementState
                 return;
             }
 
+            // 거울에서 꺾이는 순간. 반사할 때마다 음을 올려 경로가 몇 번 꺾였는지 귀로 알 수 있게 한다.
+            SoundManager.Instance.PlaySFX(SFXType.MirrorReflect, newPos, Mathf.Pow(2f, (_pathIndex - 1) * ReflectPitchStep / 12f));
             LightRotate(path[_pathIndex]);
         }
     }
@@ -104,7 +105,6 @@ public class PlayerLightMoveState : PlayerBaseMovementState
         // 박스 콜라이더
         controller.BoxCol.isTrigger = false;
         controller.BoxCol.size = controller.InitialVector;
-        controller.BoxCol.offset = Vector2.zero;
 
         controller.CanJump = true;
     }

@@ -37,6 +37,9 @@ public class NewGameButton : MonoBehaviour
     public void StartNewGame(string newSceneName)
     {
         if (SaveManager.Instance != null) SaveManager.Instance.ResetProgress();   // 이전 진행 기록 삭제 후 처음부터 시작
-        SceneManager.LoadScene(newSceneName);
+
+        // 메뉴에 MenuFade가 있으면 화면이 어두워진 뒤에 넘어간다 (없으면 지금까지처럼 바로 넘어간다)
+        if (MenuFade.Instance != null) MenuFade.Instance.LoadScene(newSceneName);
+        else SceneManager.LoadScene(newSceneName);
     }
 }
