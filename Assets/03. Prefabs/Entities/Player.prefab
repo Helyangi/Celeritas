@@ -25022,12 +25022,11 @@ MonoBehaviour:
   JumpForce: 12.5
   RespawnTime: 1
   LightMoveBaseDuration: 0.1
-  LightMoveDurationPerReflect: 0.04
+  LightMoveDurationPerReflect: 0.1
   MinLightMoveSpeed: 20
   MaxLightMoveSpeed: 400
   LightMoveSpeed: 35
   LightShotHitstop: 0.05
-  MirrorReflectHitstop: 0
   LightArriveHitstop: 0.05
 --- !u!114 &1260692395035282599
 MonoBehaviour:
@@ -25120,7 +25119,6 @@ MonoBehaviour:
   _flash: {fileID: 4746628128850548177}
   _impulse: {fileID: 1946980112441271030}
   _shotImpulse: 0.3
-  _reflectImpulse: 0
   _reflectCount: 6
   _reflectSpeed: {x: 1, y: 2.5}
   _reflectSpread: 0.06
