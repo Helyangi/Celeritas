@@ -15,6 +15,7 @@ public class StageController : MonoBehaviour
 
     private void StartStage()
     {
+        InputManager.Instance.EnablePlayerInput();
         PlayerController player = FindFirstObjectByType<PlayerController>();
         if (player == null)
         {

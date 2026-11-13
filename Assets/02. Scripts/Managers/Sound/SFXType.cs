@@ -12,5 +12,6 @@ public enum SFXType
     Respawn = 7,
     Typing = 8,
     TutorialShow = 9,
-    Radio = 10
+    Radio = 10,
+    MirrorReflect = 11
 }
