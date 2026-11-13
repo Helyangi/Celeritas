@@ -23,8 +23,7 @@ public class PlayerLightMoveEffect : MonoBehaviour
 
     [Header("카메라 반동")]
     [SerializeField] private CinemachineImpulseSource _impulse;
-    [SerializeField] private float _shotImpulse = 0.3f;     // 발사 반동 세기 (0이면 끔)
-    [SerializeField] private float _reflectImpulse = 0.06f; // 반사 반동 세기 (0이면 끔)
+    [SerializeField] private float _shotImpulse = 0.3f; // 발사 반동 세기 (0이면 끔)
 
     [Header("거울 반사 - 파티클")]
     [SerializeField] private int _reflectCount = 6;
@@ -60,7 +59,6 @@ public class PlayerLightMoveEffect : MonoBehaviour
     private void OnLightReflected(Vector2 position, Vector2 direction)
     {
         Burst(_reflectBurst, position, Vector2.zero, _reflectCount, _reflectSpeed, _reflectSpread);
-        Recoil(direction, _reflectImpulse);
     }
 
     private void Recoil(Vector2 direction, float force)

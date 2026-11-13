@@ -35,14 +35,18 @@ public class PlayerLightMoveState : PlayerBaseMovementState
         controller.RaiseLightShot(from, (shotTarget - from).normalized);
     }
 
-    // 경로가 길든 짧든 같은 시간이 걸리도록 속도를 구한다.
-    // (거울이 몇 번 꺾이는지와 상관없이 "빛이 번쩍 지나갔다"가 일정하게 읽히게 하기 위해서다)
+    // 이동에 걸릴 시간을 정하고, 경로 길이를 그 시간으로 나눠 속도를 구한다.
+    // 직선 발사는 짧게 번쩍이고, 거울을 많이 거칠수록 그만큼 시간을 벌어 꺾이는 순간이 보이게 한다.
     private float CalculateSpeed()
     {
-        float duration = controller.Stats.LightMoveDuration;
-        if (duration <= 0f) return controller.Stats.LightMoveSpeed; // 예전처럼 고정 속도로 움직인다
-
         List<Vector2> path = controller.LightAimingLine.LightPath;
+        if (controller.Stats.LightMoveBaseDuration <= 0f) return controller.Stats.LightMoveSpeed; // 예전처럼 고정 속도로 움직인다
+
+        // 경로의 마지막 점은 빛 오브이고, 그 앞의 점들이 거울에서 꺾인 지점이다
+        int reflectCount = Mathf.Max(0, path.Count - 1);
+        float duration = controller.Stats.LightMoveBaseDuration + reflectCount * controller.Stats.LightMoveDurationPerReflect;
+        if (duration <= 0f) return controller.Stats.MaxLightMoveSpeed;
+
         float total = 0f;
         Vector2 from = controller.RB.position;
         for (int i = 0; i < path.Count; i++)
@@ -106,7 +110,6 @@ public class PlayerLightMoveState : PlayerBaseMovementState
 
             // 거울에서 꺾이는 순간. 반사할 때마다 음을 올려 경로가 몇 번 꺾였는지 귀로 알 수 있게 한다.
             SoundManager.Instance.PlaySFX(SFXType.MirrorReflect, position, Mathf.Pow(2f, (_pathIndex - 1) * ReflectPitchStep / 12f));
-            Hitstop.Play(controller.Stats.MirrorReflectHitstop); // 꺾이는 순간을 하나의 사건으로 느끼게 한다
             LightRotate(position, path[_pathIndex]);
             controller.RaiseLightReflected(position, (path[_pathIndex] - position).normalized);
         }
