@@ -116,6 +116,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // 일시정지 중에는 상태 판단을 멈춘다. Update는 timeScale이 0이어도 돌기 때문에,
+        // 막지 않으면 멈춘 사이 조준 해제(=발사) 같은 전환이 일어난다.
+        if (GameTime.IsPaused) return;
+
         // 리스폰 중 입력 감지 X
         if (_isRespawning) return;
         

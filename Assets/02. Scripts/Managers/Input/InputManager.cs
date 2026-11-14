@@ -59,6 +59,10 @@ public class InputManager : MonoBehaviour
     }
     public bool IsAimHeld => _actionMaps.Player.LightEmission.IsPressed();
 
+    // 지금 켜져 있는가 (일시정지가 멈추기 전 상태를 기억했다가 그대로 돌려주기 위해 쓴다)
+    public bool IsPlayerInputEnabled => _actionMaps != null && _actionMaps.Player.enabled;
+    public bool IsDialogueInputEnabled => _actionMaps != null && _actionMaps.Dialogue.enabled;
+
     // 플레이어 인풋 활성 & 비활성
     public void EnablePlayerInput()
     {

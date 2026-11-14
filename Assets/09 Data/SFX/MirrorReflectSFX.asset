@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MirrorReflectSFX
   m_EditorClassIdentifier: Assembly-CSharp::SFXData
   Type: 11
-  Clip: {fileID: 8300000, guid: 2311bcbee7c6f483a9a85d7682267bce, type: 3}
-  Volume: 0.45
+  Clip: {fileID: 8300000, guid: cdc6d83fa79784a9da976225321814b0, type: 3}
+  Volume: 1
   MixerGroup: {fileID: 4238565503558348747, guid: 5af9243aa819b4d2ab8f543b44978d9c, type: 2}

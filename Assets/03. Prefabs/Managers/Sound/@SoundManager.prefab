@@ -60,6 +60,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9243a92bc70a448d8dd1ee94ad5f416, type: 2}
   - {fileID: 11400000, guid: 1476f9435276a4a3fb2e5c96f3b58d3e, type: 2}
   - {fileID: 11400000, guid: 0fa7267c4a9654f5c99b87b8d6e29e8a, type: 2}
+  - {fileID: 11400000, guid: a8817c948d24541f18d7ffd8aad13153, type: 2}
+  - {fileID: 11400000, guid: a7cd8cf652d7e40a890c37f854ac5c5f, type: 2}
   _bgmSource: {fileID: 0}
   _defaultFade: 1
 --- !u!82 &4892510683170529812

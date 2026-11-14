@@ -5,11 +5,11 @@ using UnityEngine;
 /// 아주 짧은 순간 시간을 멈춰 타격감을 만든다 (히트스톱).
 /// 어디서든 Hitstop.Play(0.05f)로 부르면 되고, 씬에 미리 둘 것은 없다 (처음 부를 때 스스로 만들어진다).
 /// 멈춰 있는 동안에도 흐르는 시간(unscaledDeltaTime)으로 세기 때문에 정확히 그 길이만큼만 멈춘다.
+/// 시간은 직접 바꾸지 않고 GameTime의 히트스톱 스위치만 만진다 (일시정지와 엉키지 않게).
 /// </summary>
 public static class Hitstop
 {
     private static Runner _runner;
-    private static float _originalScale = 1f; // 멈추기 직전의 시간 배속 (끝나면 이 값으로 되돌린다)
     private static float _remaining;
     private static bool _running;
 
@@ -22,7 +22,6 @@ public static class Hitstop
         _runner = null;
         _running = false;
         _remaining = 0f;
-        _originalScale = 1f;
     }
 
     /// <summary>
@@ -31,6 +30,7 @@ public static class Hitstop
     public static void Play(float duration, float timeScale = 0f)
     {
         if (!Application.isPlaying || duration <= 0f) return;
+        if (GameTime.IsPaused) return; // 일시정지 중에는 걸지 않는다
 
         if (_running)
         {
@@ -38,10 +38,7 @@ public static class Hitstop
             return;
         }
 
-        if (Time.timeScale <= 0f) return; // 일시정지 등으로 이미 멈춰 있으면 건드리지 않는다
-
         EnsureRunner();
-        _originalScale = Time.timeScale;
         _remaining = duration;
         _runner.Begin(Mathf.Clamp01(timeScale));
     }
@@ -67,7 +64,7 @@ public static class Hitstop
         private IEnumerator Routine(float scale)
         {
             _running = true;
-            Time.timeScale = scale;
+            GameTime.SetHitstopScale(scale);
 
             while (_remaining > 0f)
             {
@@ -75,16 +72,17 @@ public static class Hitstop
                 yield return null;
             }
 
-            Time.timeScale = _originalScale;
+            // "원래 값으로 되돌리기"가 아니라 "내 몫을 내려놓기". 일시정지 중이면 여전히 멈춰 있는다
+            GameTime.SetHitstopScale(1f);
             _running = false;
         }
 
-        // 멈춘 채로 오브젝트가 사라져 시간이 멈춘 상태로 남지 않게 한다
+        // 멈춘 채로 오브젝트가 사라져 히트스톱 스위치가 내려간 채로 남지 않게 한다
         private void OnDisable()
         {
             if (!_running) return;
 
-            Time.timeScale = _originalScale;
+            GameTime.SetHitstopScale(1f);
             _running = false;
             _remaining = 0f;
         }

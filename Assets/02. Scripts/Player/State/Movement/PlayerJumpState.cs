@@ -24,4 +24,14 @@ public class PlayerJumpState : PlayerBaseMovementState
     {
         Move(_jumpMoveInput);
     }
+    protected override bool ChangeFallState()
+    {
+        bool exceptionHandling = controller.RB.linearVelocityY <= 0 && controller.GroundChecker.IsGround();
+        if (controller.RB.linearVelocityY < 0 && !controller.GroundChecker.IsGround() || exceptionHandling)
+        {
+            controller.ChangeMovementState(controller.FallState);
+            return true;
+        }
+        return false;
+    }
 }

@@ -30,6 +30,15 @@ public class ScreenFader : MonoBehaviour
         Group.interactable = false;
     }
 
+    /// <summary>
+    /// 가림막이 마우스 입력을 막을지 정한다.
+    /// 막는 동안에는 뒤쪽 버튼이 호버되거나 눌리지 않는다 (화면이 덮여 있는데 눌리면 이상하다).
+    /// </summary>
+    public void SetBlockInput(bool value)
+    {
+        Group.blocksRaycasts = value;
+    }
+
     public void SetAlpha(float alpha)
     {
         Group.alpha = Mathf.Clamp01(alpha);

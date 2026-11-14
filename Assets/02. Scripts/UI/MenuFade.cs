@@ -18,10 +18,24 @@ public class MenuFade : MonoBehaviour
     [SerializeField] private Color _color = Color.black;
 
     [Header("시간")]
+    [Tooltip("씬이 시작되고 페이드 인이 시작되기까지 기다리는 시간(초). 검은 화면이 잠깐 유지된다")]
+    [SerializeField, Min(0f)] private float _fadeInDelay = 0.5f;
     [SerializeField, Min(0f)] private float _fadeInDuration = 0.8f;  // 메뉴가 떠오르는 시간
     [SerializeField, Min(0f)] private float _fadeOutDuration = 0.5f; // 메뉴를 떠나며 어두워지는 시간
 
+    [Header("건너뛰기")]
+    [Tooltip("페이드 인 도중 클릭이나 아무 키로 건너뛸 수 있게 한다")]
+    [SerializeField] private bool _skippable = true;
+    [Tooltip("건너뛸 때(또는 스플래시를 건너뛰고 들어왔을 때) 떠오르는 시간(초)")]
+    [SerializeField, Min(0f)] private float _skipFadeDuration = 0.3f;
+
     private bool _leaving; // 페이드 아웃 도중 버튼을 또 눌러도 두 번 넘어가지 않게 한다
+    private Coroutine _fadeInRoutine;
+    private bool _fadingIn;
+    private bool _fadeInSkipped;
+
+    /// <summary>메뉴를 떠나는 중인가. 버튼들은 이 동안 상태를 얼려둔다.</summary>
+    public bool IsLeaving => _leaving;
 
     private void Awake()
     {
@@ -44,7 +58,47 @@ public class MenuFade : MonoBehaviour
 
         _fader.SetColor(_color);
         _fader.SetAlpha(1f); // 페이드 인은 항상 완전히 덮인 화면에서 시작한다
-        StartCoroutine(_fader.FadeTo(0f, _fadeInDuration));
+
+        // 스플래시를 건너뛰고 들어왔으면 메뉴도 기다리게 하지 않는다 (한 번 눌렀는데 또 기다리면 건너뛴 의미가 없다)
+        if (SkipInput.ConsumeIntroSkipped())
+        {
+            _fadeInSkipped = true;
+            _fadeInRoutine = StartCoroutine(FadeInRoutine(0f, _skipFadeDuration));
+        }
+        else
+        {
+            _fadeInRoutine = StartCoroutine(FadeInRoutine(_fadeInDelay, _fadeInDuration));
+        }
+    }
+
+    // 잠깐 검은 화면을 유지했다가 떠오른다. 바로 밝아지면 급해 보인다.
+    private IEnumerator FadeInRoutine(float delay, float duration)
+    {
+        _fadingIn = true;
+        _fader.SetBlockInput(true); // 아직 덮여 있는 동안에는 버튼이 눌리지 않게
+
+        if (delay > 0f) yield return new WaitForSeconds(delay);
+
+        yield return _fader.FadeTo(0f, duration); // 지금 투명도에서 시작하므로 중간에 건너뛰어도 튀지 않는다
+
+        _fader.SetBlockInput(false); // 다 떠오르면 조작을 넘겨준다
+        _fadingIn = false;
+        _fadeInRoutine = null;
+    }
+
+    private void Update()
+    {
+        if (!_fadingIn || _fadeInSkipped || !_skippable || _leaving) return;
+        if (SkipInput.Pressed()) SkipFadeIn();
+    }
+
+    // 남은 대기와 페이드를 버리고 빠르게 떠오른다.
+    // 건너뛰는 클릭은 아직 막이 입력을 막고 있어서 뒤쪽 버튼까지 눌리지 않는다.
+    private void SkipFadeIn()
+    {
+        _fadeInSkipped = true;
+        if (_fadeInRoutine != null) StopCoroutine(_fadeInRoutine);
+        _fadeInRoutine = StartCoroutine(FadeInRoutine(0f, _skipFadeDuration));
     }
 
     /// <summary>
@@ -68,6 +122,9 @@ public class MenuFade : MonoBehaviour
     {
         if (_leaving) return;
         _leaving = true;
+
+        // 떠나는 중에는 더 이상 입력을 받지 않는다 (호버가 바뀌거나 다른 버튼이 눌리면 이상하다)
+        if (_fader != null) _fader.SetBlockInput(true);
 
         StartCoroutine(FadeOutRoutine(action));
     }

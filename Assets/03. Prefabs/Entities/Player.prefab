@@ -25022,7 +25022,7 @@ MonoBehaviour:
   JumpForce: 12.5
   RespawnTime: 1
   LightMoveBaseDuration: 0.1
-  LightMoveDurationPerReflect: 0.1
+  LightMoveDurationPerReflect: 0.15
   MinLightMoveSpeed: 20
   MaxLightMoveSpeed: 400
   LightMoveSpeed: 35

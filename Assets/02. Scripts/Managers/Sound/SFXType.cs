@@ -13,5 +13,7 @@ public enum SFXType
     Typing = 8,
     TutorialShow = 9,
     Radio = 10,
-    MirrorReflect = 11
+    MirrorReflect = 11,
+    UIHover = 12,
+    UIClick = 13
 }

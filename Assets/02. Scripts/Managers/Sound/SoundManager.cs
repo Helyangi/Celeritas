@@ -53,6 +53,9 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
+        // 클립이 아직 안 들어간 항목은 조용히 넘어간다 (등록만 해두고 음원을 나중에 넣는 경우)
+        if (data.Clip == null) return;
+
         SFXObject obj = null;
 
         if (_sfxPool.Count > 0)
