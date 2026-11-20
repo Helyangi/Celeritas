@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
@@ -22,6 +22,7 @@ public class CutsceneManager : MonoBehaviour
     private CinemachineCamera _activeCamera; // 컷씬이 켜 둔 카메라 (끝나면 원래 우선순위로 돌려놓는다)
     private int _activeCameraOriginalPriority;
     private int _backgroundCount;            // 동시에 진행 중인 작업 수
+    private readonly List<IEnumerator> _activeRoutines = new List<IEnumerator>(); // 지금 실행 중인 단계들 (중단할 때 정리하려고 기억해 둔다)
 
     public bool IsPlaying => _current != null;
     public CutsceneData Current => _current;
@@ -121,8 +122,24 @@ public class CutsceneManager : MonoBehaviour
         _backgroundCount--;
     }
 
-    // 작업을 끝까지 실행한다. 안에서 오류가 나면 기록만 남기고 그 작업을 끝낸다.
+    // 작업을 끝까지 실행한다. 실행 중인 동안 목록에 기억해 두어, Abort가 정리할 수 있게 한다.
     private IEnumerator SafeRun(IEnumerator routine, string label)
+    {
+        if (routine == null) yield break;
+
+        _activeRoutines.Add(routine);
+        try
+        {
+            yield return SafeRunInner(routine, label);
+        }
+        finally
+        {
+            _activeRoutines.Remove(routine);
+        }
+    }
+
+    // 작업을 끝까지 실행한다. 안에서 오류가 나면 기록만 남기고 그 작업을 끝낸다.
+    private IEnumerator SafeRunInner(IEnumerator routine, string label)
     {
         if (routine == null) yield break;
 
@@ -143,6 +160,55 @@ public class CutsceneManager : MonoBehaviour
             if (!hasNext) yield break;
             yield return current;
         }
+    }
+
+    /// <summary>
+    /// 재생 중인 컷씬을 그 자리에서 멈춘다. (메인 메뉴로 나갈 때처럼 컷씬을 이어갈 수 없을 때 사용)
+    /// 컷씬이 만든 화면 가림막, 대사창, 카메라, 입력을 정리하고 남은 단계는 실행하지 않는다.
+    /// 재생 중이 아니면 아무 일도 하지 않는다.
+    /// </summary>
+    public void Abort()
+    {
+        if (_current == null && _backgroundCount == 0 && _activeRoutines.Count == 0) return;
+
+        // 이 매니저가 돌리는 코루틴(단계 진행, 동시 진행 작업)을 전부 멈춘다
+        StopAllCoroutines();
+
+        // 코루틴을 강제로 멈추면 단계 안의 finally가 실행되지 않으므로, 진행 중이던 단계를 직접 정리한다
+        // (예: 대사 단계가 걸어 둔 "대사 끝남" 구독 해제)
+        IEnumerator[] running = _activeRoutines.ToArray();
+        _activeRoutines.Clear();
+        foreach (IEnumerator routine in running)
+        {
+            try
+            {
+                (routine as IDisposable)?.Dispose();
+            }
+            catch (Exception e)
+            {
+                LogError("중단 정리", e);
+            }
+        }
+        _backgroundCount = 0;
+
+        // 대사창이 열려 있으면 닫는다
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsTalking) DialogueManager.Instance.EndDialogue();
+
+        ReleaseCamera();
+
+        // 페이드로 화면이 가려진 채 멈추면 다음 씬이 까맣게 남으므로 걷어낸다
+        if (_fader != null)
+        {
+            _fader.SetAlpha(0f);
+            _fader.SetBlockInput(false);
+        }
+
+        // 컷씬이 넣어 둔 입력이 남지 않게 비운다
+        if (InputManager.Instance != null) InputManager.Instance.ClearScriptedInput();
+
+        CutsceneData data = _current;
+        _current = null;
+        if (data != null) CutsceneEnded?.Invoke(data);
     }
 
     private void Finish(CutsceneData data)
